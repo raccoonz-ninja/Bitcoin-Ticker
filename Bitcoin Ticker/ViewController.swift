@@ -13,9 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var priceOnAppIconSwitch: UISwitch!
     
     @IBAction func onPriceOnAppIconChanged(sender: AnyObject) {
+        self.priceOnAppIconSwitch.enabled = false
         Dispatcher.setPriceOnAppIconSetting(self.priceOnAppIconSwitch.on) { (priceOnAppIcon, error) -> Void in
-            print(priceOnAppIcon)
-            print(error)
+            if let value = priceOnAppIcon {
+                print("Set to \(value ? "true" : "false")")
+            } else if error != nil {
+                print("Couldn't update settings")
+            }
+            self.priceOnAppIconSwitch.enabled = true
         }
     }
     

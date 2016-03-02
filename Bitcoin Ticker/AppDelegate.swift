@@ -17,15 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    // Callback from the system to get the push notification device token
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(deviceToken.bytes), count: deviceToken.length)
         let hexBytes = bytes.map { String(format: "%02hhx", $0) }
         let deviceTokenString = hexBytes.joinWithSeparator("")
-        print(deviceTokenString)
+        Dispatcher.trigger(Dispatcher.Event.DeviceTokenReceived, payload: deviceTokenString)
     }
 
+    // Callback from the system when getting the push notification device token failed
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        Dispatcher.trigger(Dispatcher.Event.DeviceTokenFailure, payload: error)
         Dispatcher.trigger(Dispatcher.Event.DeviceTokenFailure, payload: error)
     }
 
