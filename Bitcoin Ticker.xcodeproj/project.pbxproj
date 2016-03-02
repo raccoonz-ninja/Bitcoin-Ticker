@@ -97,6 +97,11 @@
 					2D6CAAD81C85510B00B76138 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 49ND9TC5D4;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
