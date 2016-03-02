@@ -12,6 +12,8 @@
 		2D6CAAE21C85510B00B76138 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D6CAAE01C85510B00B76138 /* Main.storyboard */; };
 		2D6CAAE41C85510B00B76138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D6CAAE31C85510B00B76138 /* Assets.xcassets */; };
 		2D6CAAE71C85510B00B76138 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D6CAAE51C85510B00B76138 /* LaunchScreen.storyboard */; };
+		2D91286B1C8695620086D4E4 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D91286A1C8695620086D4E4 /* Dispatcher.swift */; };
+		2D91286D1C8695E20086D4E4 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D91286C1C8695E20086D4E4 /* Server.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		2D6CAAE31C85510B00B76138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D6CAAE61C85510B00B76138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D6CAAE81C85510B00B76138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D91286A1C8695620086D4E4 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		2D91286C1C8695E20086D4E4 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				2D6CAAE31C85510B00B76138 /* Assets.xcassets */,
 				2D6CAAE51C85510B00B76138 /* LaunchScreen.storyboard */,
 				2D6CAAE81C85510B00B76138 /* Info.plist */,
+				2D91286A1C8695620086D4E4 /* Dispatcher.swift */,
+				2D91286C1C8695E20086D4E4 /* Server.swift */,
 			);
 			path = "Bitcoin Ticker";
 			sourceTree = "<group>";
@@ -143,6 +149,8 @@
 			files = (
 				2D6CAADF1C85510B00B76138 /* ViewController.swift in Sources */,
 				2D6CAADD1C85510B00B76138 /* AppDelegate.swift in Sources */,
+				2D91286D1C8695E20086D4E4 /* Server.swift in Sources */,
+				2D91286B1C8695620086D4E4 /* Dispatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +300,7 @@
 				2D6CAAED1C85510B00B76138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
