@@ -61,7 +61,6 @@ class Dispatcher: NSObject {
     // -------
     
     static func setPriceOnAppIconSetting(priceOnAppIcon: Bool, completion: (priceOnAppIcon: Bool?, error: NSError?) -> Void) -> Void {
-        
         // Turning setting on
         if priceOnAppIcon {
             // Wait to receive the device token (or failure)
@@ -81,7 +80,6 @@ class Dispatcher: NSObject {
         else {
             completion(priceOnAppIcon: false, error: nil)
         }
-        
     }
     
 }
