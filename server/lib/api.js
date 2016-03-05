@@ -5,6 +5,7 @@ var clearToken = PriceWatcher.clearToken
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
+
 app.use(bodyParser.json())
 
 app.get('/', function(req, res){
@@ -34,10 +35,10 @@ app.post('/subscribe', function(req, res) {
     function (err) {
       if (err) {
         console.log(err)
-        return res.send('Unexpected error')
+        return res.send({error: 'Unexpected error'})
       }
       notifyToken(deviceToken)
-      return res.send('ok')
+      return res.send({result: 'ok'})
     }
   )
 })
@@ -47,7 +48,7 @@ app.post('/unsubscribe', function(req, res) {
   params = req.body
   deviceToken = params.deviceToken
   error = checkParam(deviceToken, 'deviceToken')
-  if (error) { return res.send(error) }
+  if (error) { return res.send({error: error}) }
 
   console.log('/unsubscribe ' + deviceToken)
   db.remove(
@@ -56,10 +57,10 @@ app.post('/unsubscribe', function(req, res) {
     function (err, numRemoved) {
       if (err) {
         console.log(err)
-        return res.send('Unexpected error')
+        return res.send({error: 'Unexpected error'})
       }
       clearToken(deviceToken)
-      return res.send('ok')
+      return res.send({result: 'ok'})
     }
   )
 })

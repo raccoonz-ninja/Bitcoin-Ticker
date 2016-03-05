@@ -10,6 +10,9 @@ import UIKit
 
 class ConfigData: NSObject, NSCoding {
     var deviceToken: String?
+    override init() {
+        self.deviceToken = nil
+    }
     required init?(coder aDecoder: NSCoder) {
         self.deviceToken = aDecoder.decodeObjectForKey("deviceToken") as? String
     }
@@ -41,17 +44,19 @@ class Config: NSObject {
             loadFromDisk()
         }
     }
-    static func loadFromDisk() {
+    private static func loadFromDisk() {
         _loaded = true
         guard let data = NSUserDefaults.standardUserDefaults().objectForKey(_configDataKey) as? NSData else {
+            self._configData = ConfigData()
             return
         }
         guard let configData = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? ConfigData else {
+            self._configData = ConfigData()
             return
         }
         self._configData = configData
     }
-    static func syncToDisk() {
+    private static func syncToDisk() {
         let data = NSKeyedArchiver.archivedDataWithRootObject(_configData)
         NSUserDefaults.standardUserDefaults().setObject(data, forKey: _configDataKey)
     }

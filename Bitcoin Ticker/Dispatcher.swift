@@ -69,7 +69,18 @@ class Dispatcher: NSObject {
                     completion(priceOnAppIcon: nil, error: notification.object as? NSError)
                 }
                 else if event == Dispatcher.Event.DeviceTokenReceived {
-                    completion(priceOnAppIcon: true, error: nil)
+                    if let token = notification.object as? String {
+                        Config.deviceToken = token
+                        Server.subscribe({ (error) -> Void in
+                            if let error = error {
+                                completion(priceOnAppIcon: nil, error: error)
+                            } else {
+                                completion(priceOnAppIcon: true, error: nil)
+                            }
+                        })
+                    } else {
+                        completion(priceOnAppIcon: nil, error: error("Unexpected device token \(notification.object)"))
+                    }
                 }
             })
             // Register for push notifications
@@ -78,8 +89,25 @@ class Dispatcher: NSObject {
         }
         // Turning setting off
         else {
-            completion(priceOnAppIcon: false, error: nil)
+            if Config.deviceToken != nil {
+                Server.unsubscribe({ (error) -> Void in
+                    if let error = error {
+                        completion(priceOnAppIcon: nil, error: error)
+                    } else {
+                        completion(priceOnAppIcon: false, error: nil)
+                    }
+                })
+            } else {
+                completion(priceOnAppIcon: false, error: nil)
+            }
         }
+    }
+    
+    
+    static private func error(message: String) -> NSError {
+        return NSError(domain: "Dispatcher", code: 1, userInfo: [
+            NSLocalizedDescriptionKey: message
+        ])
     }
     
 }

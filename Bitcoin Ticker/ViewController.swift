@@ -17,8 +17,9 @@ class ViewController: UIViewController {
         Dispatcher.setPriceOnAppIconSetting(self.priceOnAppIconSwitch.on) { (priceOnAppIcon, error) -> Void in
             if let value = priceOnAppIcon {
                 print("Set to \(value ? "true" : "false")")
-            } else if error != nil {
-                print("Couldn't update settings")
+            } else if let error = error {
+                self.priceOnAppIconSwitch.on = !self.priceOnAppIconSwitch.on // Revert on failure
+                NSLog("\(error.debugDescription)")
             }
             self.priceOnAppIconSwitch.enabled = true
         }
