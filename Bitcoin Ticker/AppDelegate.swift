@@ -29,5 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         Dispatcher.trigger(Dispatcher.Event.DeviceTokenFailure, payload: error)
     }
+    
+    // Called when a push notification is received while the app is running
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        if let info = userInfo["aps"] as? NSDictionary {
+            if let badge = info["badge"] as? Int {
+                UIApplication.sharedApplication().applicationIconBadgeNumber = badge
+            }
+        }
+    }
 
 }
