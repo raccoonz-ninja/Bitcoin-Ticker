@@ -8,25 +8,29 @@
 
 import UIKit
 
-class ConfigData: NSObject, NSCoding {
-    var deviceToken: String?
-    override init() {
-        self.deviceToken = nil
-    }
-    required init?(coder aDecoder: NSCoder) {
-        self.deviceToken = aDecoder.decodeObjectForKey("deviceToken") as? String
-    }
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.deviceToken, forKey: "deviceToken")
-    }
-}
-
 class Config: NSObject {
 
+    // Internal data structure used to persist the config
+    private class ConfigData: NSObject, NSCoding {
+        var deviceToken: String?
+        override init() {
+            self.deviceToken = nil
+        }
+        @objc required init?(coder aDecoder: NSCoder) {
+            self.deviceToken = aDecoder.decodeObjectForKey("deviceToken") as? String
+        }
+        @objc func encodeWithCoder(aCoder: NSCoder) {
+            aCoder.encodeObject(self.deviceToken, forKey: "deviceToken")
+        }
+    }
+    
+    
     private static var _loaded: Bool = false
     private static var _configDataKey = "configData"
     private static var _configData: ConfigData!
-
+    
+    
+    // Public API
     static var deviceToken: String? {
         get {
             loadIfNeeded()
@@ -39,6 +43,8 @@ class Config: NSObject {
         }
     }
 
+    
+    // Private utilities
     private static func loadIfNeeded() {
         if !_loaded {
             loadFromDisk()

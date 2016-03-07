@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var priceOnAppIconSwitch: UISwitch!
+    @IBOutlet weak var currentPrice: UILabel!
     
     @IBAction func onPriceOnAppIconChanged(sender: AnyObject) {
         self.priceOnAppIconSwitch.enabled = false
@@ -27,7 +28,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        updatePrice()
+        Dispatcher.on(Dispatcher.Event.NewPriceReceived) { () -> Void in
+            self.updatePrice()
+        }
+    }
+    
+    func updatePrice() {
+        let last = BitcoinPrice.last.last
+        currentPrice.text = last > 0 ? "$\(last)" : ""
     }
 
     override func didReceiveMemoryWarning() {

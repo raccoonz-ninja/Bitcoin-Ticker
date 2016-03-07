@@ -51,5 +51,10 @@ class Dispatcher: NSObject {
             }))
         }
     }
+    static func on(event: Event, completion: () -> Void) {
+        Dispatcher.notificationCenter.addObserverForName(event.rawValue, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
+            completion()
+        }
+    }
     
 }
