@@ -11,7 +11,6 @@ import UIKit
 
 class Dispatcher: NSObject {
 
-    private static let app = UIApplication.sharedApplication()
     private static let notificationCenter = NSNotificationCenter.defaultCenter()
     private static let debug = true // If true, logs every events
     
@@ -19,11 +18,8 @@ class Dispatcher: NSObject {
     enum Event: String {
         case DeviceTokenReceived = "DeviceTokenReceived"
         case DeviceTokenFailure = "DeviceTokenFailure"
+        case NewPriceReceived = "NewPriceReceived"
     }
-    
-    
-    // Utils
-    // -----
     
     // Trigger an event with a payload
     static func trigger(event: Event, payload: AnyObject?) {
@@ -54,60 +50,6 @@ class Dispatcher: NSObject {
                 }
             }))
         }
-    }
-    
-
-    // Actions
-    // -------
-    
-    static func setPriceOnAppIconSetting(priceOnAppIcon: Bool, completion: (priceOnAppIcon: Bool?, error: NSError?) -> Void) -> Void {
-        // Turning setting on
-        if priceOnAppIcon {
-            // Wait to receive the device token (or failure)
-            Dispatcher.waitFor([Dispatcher.Event.DeviceTokenFailure, Dispatcher.Event.DeviceTokenReceived], completion: { (event: Event, notification: NSNotification) -> Void in
-                if event == Dispatcher.Event.DeviceTokenFailure {
-                    completion(priceOnAppIcon: nil, error: notification.object as? NSError)
-                }
-                else if event == Dispatcher.Event.DeviceTokenReceived {
-                    if let token = notification.object as? String {
-                        Config.deviceToken = token
-                        Server.subscribe({ (error) -> Void in
-                            if let error = error {
-                                completion(priceOnAppIcon: nil, error: error)
-                            } else {
-                                completion(priceOnAppIcon: true, error: nil)
-                            }
-                        })
-                    } else {
-                        completion(priceOnAppIcon: nil, error: error("Unexpected device token \(notification.object)"))
-                    }
-                }
-            })
-            // Register for push notifications
-            Dispatcher.app.registerForRemoteNotifications()
-            Dispatcher.app.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge], categories: Set()))
-        }
-        // Turning setting off
-        else {
-            if Config.deviceToken != nil {
-                Server.unsubscribe({ (error) -> Void in
-                    if let error = error {
-                        completion(priceOnAppIcon: nil, error: error)
-                    } else {
-                        completion(priceOnAppIcon: false, error: nil)
-                    }
-                })
-            } else {
-                completion(priceOnAppIcon: false, error: nil)
-            }
-        }
-    }
-    
-    
-    static private func error(message: String) -> NSError {
-        return NSError(domain: "Dispatcher", code: 1, userInfo: [
-            NSLocalizedDescriptionKey: message
-        ])
     }
     
 }

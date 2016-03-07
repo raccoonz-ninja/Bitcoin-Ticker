@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     @IBAction func onPriceOnAppIconChanged(sender: AnyObject) {
         self.priceOnAppIconSwitch.enabled = false
-        Dispatcher.setPriceOnAppIconSetting(self.priceOnAppIconSwitch.on) { (priceOnAppIcon, error) -> Void in
+        NotificationService.setPriceOnAppIconSetting(self.priceOnAppIconSwitch.on) { (priceOnAppIcon, error) -> Void in
             if let value = priceOnAppIcon {
                 print("Set to \(value ? "true" : "false")")
             } else if let error = error {
