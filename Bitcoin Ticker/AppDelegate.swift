@@ -15,6 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        application.setStatusBarStyle(.LightContent, animated: false)
+        self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
+        if let window = self.window {
+            window.backgroundColor = UIConfig.appBackgroundColor
+            window.rootViewController = RootViewController()
+            window.makeKeyAndVisible()
+        }
+        
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
         BitcoinPriceService.start()
         return true

@@ -26,7 +26,7 @@ Trades view
 UI and polish
 - [ ] Create an icon
 - [ ] Create a launch screen
-- [ ] Organize view in a scrollview (Settings - Main - Trades)
+- [x] Organize view in a scrollview (Settings - Main - Trades)
 - [ ] Update colors and fonts
 
 CI

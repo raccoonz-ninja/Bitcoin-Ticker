@@ -23,7 +23,7 @@ class NotificationService: NSObject {
                 else if event == Dispatcher.Event.DeviceTokenReceived {
                     if let token = notification.object as? String {
                         Config.deviceToken = token
-                        Server.subscribe({ (error) -> Void in
+                        ServerService.subscribe({ (error) -> Void in
                             if let error = error {
                                 completion(priceOnAppIcon: nil, error: error)
                             } else {
@@ -43,7 +43,7 @@ class NotificationService: NSObject {
             // Turning setting off
         else {
             if Config.deviceToken != nil {
-                Server.unsubscribe({ (error) -> Void in
+                ServerService.unsubscribe({ (error) -> Void in
                     if let error = error {
                         completion(priceOnAppIcon: nil, error: error)
                     } else {

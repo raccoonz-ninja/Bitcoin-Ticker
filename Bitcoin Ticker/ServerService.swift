@@ -1,5 +1,5 @@
 //
-//  Server.swift
+//  ServerService.swift
 //  Bitcoin Ticker
 //
 //  Created by Matthis Perrin on 3/1/16.
@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-class Server: NSObject {
+class ServerService: NSObject {
     
     private static let _baseUrl = NSURL(string: "http://172.20.10.5:5567")
     private static var _client: AFHTTPRequestOperationManager?
