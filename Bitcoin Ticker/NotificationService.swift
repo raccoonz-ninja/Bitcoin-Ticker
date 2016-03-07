@@ -27,6 +27,7 @@ class NotificationService: NSObject {
                             if let error = error {
                                 completion(priceOnAppIcon: nil, error: error)
                             } else {
+                                Config.priceOnAppIcon = true
                                 completion(priceOnAppIcon: true, error: nil)
                             }
                         })
@@ -46,10 +47,12 @@ class NotificationService: NSObject {
                     if let error = error {
                         completion(priceOnAppIcon: nil, error: error)
                     } else {
+                        Config.priceOnAppIcon = false
                         completion(priceOnAppIcon: false, error: nil)
                     }
                 })
             } else {
+                Config.priceOnAppIcon = false
                 completion(priceOnAppIcon: false, error: nil)
             }
         }

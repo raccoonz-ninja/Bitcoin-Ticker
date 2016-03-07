@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ViewController: UIViewController {
 
@@ -20,6 +21,8 @@ class ViewController: UIViewController {
                 print("Set to \(value ? "true" : "false")")
             } else if let error = error {
                 self.priceOnAppIconSwitch.on = !self.priceOnAppIconSwitch.on // Revert on failure
+                let verb = self.priceOnAppIconSwitch.on ? "enable" : "disable"
+                SVProgressHUD.showErrorWithStatus("Couldn't \(verb) setting. Internet problem?")
                 NSLog("\(error.debugDescription)")
             }
             self.priceOnAppIconSwitch.enabled = true
@@ -28,6 +31,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        priceOnAppIconSwitch.on = Config.priceOnAppIcon
         updatePrice()
         Dispatcher.on(Dispatcher.Event.NewPriceReceived) { () -> Void in
             self.updatePrice()

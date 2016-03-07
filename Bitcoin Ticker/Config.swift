@@ -13,14 +13,18 @@ class Config: NSObject {
     // Internal data structure used to persist the config
     private class ConfigData: NSObject, NSCoding {
         var deviceToken: String?
+        var priceOnAppIcon: Bool
         override init() {
             self.deviceToken = nil
+            self.priceOnAppIcon = false
         }
         @objc required init?(coder aDecoder: NSCoder) {
             self.deviceToken = aDecoder.decodeObjectForKey("deviceToken") as? String
+            self.priceOnAppIcon = aDecoder.decodeBoolForKey("priceOnAppIcon")
         }
         @objc func encodeWithCoder(aCoder: NSCoder) {
             aCoder.encodeObject(self.deviceToken, forKey: "deviceToken")
+            aCoder.encodeBool(self.priceOnAppIcon, forKey: "priceOnAppIcon")
         }
     }
     
@@ -39,6 +43,17 @@ class Config: NSObject {
         set(token) {
             loadIfNeeded()
             _configData.deviceToken = token
+            syncToDisk()
+        }
+    }
+    static var priceOnAppIcon: Bool {
+        get {
+            loadIfNeeded()
+            return _configData.priceOnAppIcon
+        }
+        set(priceOnAppIcon) {
+            loadIfNeeded()
+            _configData.priceOnAppIcon = priceOnAppIcon
             syncToDisk()
         }
     }

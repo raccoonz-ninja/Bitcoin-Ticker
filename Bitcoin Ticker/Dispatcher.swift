@@ -12,7 +12,7 @@ import UIKit
 class Dispatcher: NSObject {
 
     private static let notificationCenter = NSNotificationCenter.defaultCenter()
-    private static let debug = true // If true, logs every events
+    private static let debug = false // If true, logs every events
     
     // List all events supported by the dispatcher
     enum Event: String {
