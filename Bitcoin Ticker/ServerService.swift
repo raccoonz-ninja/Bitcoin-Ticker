@@ -10,10 +10,10 @@ import UIKit
 import AFNetworking
 
 class ServerService: NSObject {
-    
-    private static let _baseUrl = NSURL(string: "http://172.20.10.5:5567")
+
+    private static let _baseUrl = NSURL(string: "http://52.29.74.111:5567")
     private static var _client: AFHTTPRequestOperationManager?
-    
+
     private static var client: AFHTTPRequestOperationManager {
         get {
             if let client = _client {
@@ -28,7 +28,7 @@ class ServerService: NSObject {
             }
         }
     }
-    
+
     static func subscribe(completion: (error: NSError?) -> Void) {
         let params: NSDictionary = ["deviceToken": Config.deviceToken ?? "", "provider": "bitfinex"]
         client.POST("/subscribe", parameters: params, success: { (req: AFHTTPRequestOperation, res: AnyObject) -> Void in
@@ -37,7 +37,7 @@ class ServerService: NSObject {
             completion(error: error)
         }
     }
-    
+
     static func unsubscribe(completion: (error: NSError?) -> Void) {
         let params: NSDictionary = ["deviceToken": Config.deviceToken ?? ""]
         client.POST("/unsubscribe", parameters: params, success: { (req: AFHTTPRequestOperation, res: AnyObject) -> Void in
@@ -46,5 +46,5 @@ class ServerService: NSObject {
             completion(error: error)
         }
     }
-    
+
 }

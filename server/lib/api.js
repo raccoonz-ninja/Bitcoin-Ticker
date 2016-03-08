@@ -67,7 +67,7 @@ app.post('/unsubscribe', function(req, res) {
 
 module.exports = {
   start: function(port) {
-    app.listen(port)
+    app.listen(port, '0.0.0.0')
     console.log('API started on port ' + port)
   }
 }
