@@ -27,8 +27,8 @@ class Config: NSObject {
             aCoder.encodeBool(self.priceOnAppIcon, forKey: "priceOnAppIcon")
         }
     }
-    
-    
+
+
     private static var _loaded: Bool = false
     private static var _configDataKey = "configData"
     private static var _configData: ConfigData!

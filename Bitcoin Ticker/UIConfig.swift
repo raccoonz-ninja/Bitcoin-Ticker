@@ -11,5 +11,6 @@ import UIKit
 class UIConfig: NSObject {
 
     static let appBackgroundColor = Color.primaryBackground
+    static let currentPriceFont = UIFont.systemFontOfSize(60, weight: UIFontWeightUltraLight)
     
 }
