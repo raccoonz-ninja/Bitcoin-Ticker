@@ -18,7 +18,7 @@ class MainPageViewController: UIViewController {
         self.currentPriceLabel = UILabel()
         self.currentPriceLabel.text = ""
         self.currentPriceLabel.font = UIConfig.currentPriceFont
-        self.currentPriceLabel.textColor = UIColor(white: 1, alpha: 0.5)
+        self.currentPriceLabel.textColor = UIConfig.appTextColor
         self.currentPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.currentPriceLabel)
         

@@ -20,13 +20,21 @@ class PriceOnAppIconCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = UIConfig.appBackgroundColor
+        self.selectionStyle = .None
+
         self.textLabel?.text = "Price on app icon"
+        self.textLabel?.textColor = UIConfig.appTextColor
+        
+        self.switchView.tintColor = UIConfig.switchColor
+        self.switchView.onTintColor = UIConfig.switchColor
         self.switchView.on = Config.priceOnAppIcon
         self.switchView.addTarget(self, action: "onSwitchChange:", forControlEvents: .ValueChanged)
         self.accessoryView = switchView
     }
     
     func onSwitchChange(sender: AnyObject) {
+        self.activityIndicatorView.startAnimating()
         self.accessoryView = self.activityIndicatorView
         NotificationService.setPriceOnAppIconSetting(self.switchView.on) { (priceOnAppIcon, error) -> Void in
             if let error = error {
@@ -35,6 +43,7 @@ class PriceOnAppIconCell: UITableViewCell {
                 SVProgressHUD.showErrorWithStatus("Couldn't \(verb) setting. Internet problem?")
                 NSLog("\(error.debugDescription)")
             }
+            self.activityIndicatorView.stopAnimating()
             self.accessoryView = self.switchView
         }
     }

@@ -20,6 +20,7 @@ class SettingsPageViewController: UIViewController, UITableViewDataSource {
         self.tableView.dataSource = self
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.backgroundColor = UIColor.clearColor()
+        self.tableView.separatorColor = UIColor.clearColor()
         self.tableView.registerClass(PriceOnAppIconCell.self, forCellReuseIdentifier: priceOnAppIconCellIdentifier)
         
         self.view.addSubview(self.tableView)

@@ -10,7 +10,10 @@ import UIKit
 
 class UIConfig: NSObject {
 
-    static let appBackgroundColor = Color.primaryBackground
+    static let appBackgroundColor = Color.primaryColor
+    static let appTextColor = Color.primaryColorLight
+    static let switchColor = Color.primaryColorLight
+    static let pageControlColor = Color.primaryColorLight
     static let currentPriceFont = UIFont.systemFontOfSize(60, weight: UIFontWeightUltraLight)
     
 }

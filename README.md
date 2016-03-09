@@ -27,11 +27,12 @@ Trades view
 - [ ] Add average buy/sell price
 
 UI and polish
-- [ ] Create an icon
+- [x] Create an icon
 - [ ] Create a launch screen
 - [x] Organize view in a scrollview (Settings - Main - Trades)
 - [ ] Update colors and fonts
 
 CI
-- [ ] Use a deployment tool (hockeyapp?)
-- [ ] Add a crash reports (crashlytics?)
+- [x] Use a deployment tool (Crashlytics)
+- [x] Add a crash reports (Crashlytics)
+- Analytics?

@@ -43,6 +43,7 @@ class RootViewController: UIViewController, UIScrollViewDelegate {
         self.pageControl = UIPageControl()
         self.pageControl.translatesAutoresizingMaskIntoConstraints = false
         self.pageControl.numberOfPages = pageCount
+        self.pageControl.currentPageIndicatorTintColor = UIConfig.switchColor
         self.view.addSubview(self.pageControl)
         
         // Layout the UIScrollView

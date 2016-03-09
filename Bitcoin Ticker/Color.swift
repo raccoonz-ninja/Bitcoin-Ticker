@@ -10,6 +10,7 @@ import UIKit
 
 class Color: NSObject {
 
-    static let primaryBackground = UIColor(red: 0.13, green: 0.18, blue: 0.19, alpha: 1)
+    static let primaryColor = UIColor(red: 0.13, green: 0.18, blue: 0.19, alpha: 1)
+    static let primaryColorLight = UIColor(red: 0.694, green: 0.714, blue: 0.718, alpha: 1)
     
 }
