@@ -27,7 +27,7 @@ app.post('/subscribe', function(req, res) {
   error = checkParam(provider, 'provider')
   if (error) { return res.send(error) }
 
-  console.log('/subscribe ' + deviceToken + '/' + provider)
+  console.log('[' + new Date() + '] /subscribe ' + deviceToken + '/' + provider)
   db.update(
     { deviceToken: deviceToken },
     { deviceToken: deviceToken, provider: provider },
@@ -50,7 +50,7 @@ app.post('/unsubscribe', function(req, res) {
   error = checkParam(deviceToken, 'deviceToken')
   if (error) { return res.send({error: error}) }
 
-  console.log('/unsubscribe ' + deviceToken)
+  console.log('[' + new Date() + '] /unsubscribe ' + deviceToken)
   db.remove(
     { deviceToken: deviceToken },
     { multi: true },
@@ -68,6 +68,6 @@ app.post('/unsubscribe', function(req, res) {
 module.exports = {
   start: function(port) {
     app.listen(port, '0.0.0.0')
-    console.log('API started on port ' + port)
+    console.log('[' + new Date() + '] API started on port ' + port)
   }
 }

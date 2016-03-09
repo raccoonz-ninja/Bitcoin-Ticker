@@ -27,7 +27,7 @@ var notifyAll = function() {
     if (err) {
       console.log(err)
     } else {
-      console.log('Sending push notification to ' + doc.length + ' devices ($' + lastPrice + ').')
+      console.log('[' + new Date() + '] Sending push notification to ' + doc.length + ' devices ($' + lastPrice + ').')
       doc.forEach(function (user) {
         notifyToken(user.deviceToken)
       })
