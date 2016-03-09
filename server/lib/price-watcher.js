@@ -5,15 +5,7 @@ var db = require('./database')
 var options = {passphrase: 'sdl70@sv926'}
 var apnConnection = new apn.Connection(options)
 
-// db.insert({
-//   deviceToken: '8459525a2515c871d3922f839e35564863bf921d7df107e750c3527efb6fb001',
-//   market: 'bitfinex'
-// })
-
 var lastPrice = null
-
-// deviceToken, market = bitfinex
-
 var onNewPrice = function(newPrice) {
   roundedPrice = Math.floor(newPrice)
   if (!lastPrice || lastPrice !== roundedPrice) {
@@ -25,7 +17,7 @@ var onNewPrice = function(newPrice) {
 var notifyAll = function() {
   db.find({}, function(err, doc) {
     if (err) {
-      console.log(err)
+      console.log('[' + new Date() + '] ' + err)
     } else {
       console.log('[' + new Date() + '] Sending push notification to ' + doc.length + ' devices ($' + lastPrice + ').')
       doc.forEach(function (user) {
@@ -49,15 +41,19 @@ setBadge = function(deviceToken, badgeCount) {
     note.badge = badgeCount
     apnConnection.pushNotification(note, myDevice)
   } catch (error) {
-    console.log(error)
+    console.error('[' + new Date() + '] ' + error)
   }
 }
 
 var checkPrice = function(next) {
   request('https://api.bitfinex.com/v1/pubticker/BTCUSD', function(err, res, body) {
-    var data = JSON.parse(body)
-    var last = parseFloat(data.last_price)
-    onNewPrice(last)
+    try {
+      var data = JSON.parse(body)
+      var last = parseFloat(data.last_price)
+      onNewPrice(last)
+    } catch (err) {
+      console.error('[' + new Date() + '] ' + err)
+    }
     setTimeout(checkPrice, next)
   })
 }

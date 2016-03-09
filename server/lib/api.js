@@ -34,7 +34,7 @@ app.post('/subscribe', function(req, res) {
     { upsert: true },
     function (err) {
       if (err) {
-        console.log(err)
+        console.error('[' + new Date() + '] ' + err)
         return res.send({error: 'Unexpected error'})
       }
       notifyToken(deviceToken)
@@ -56,7 +56,7 @@ app.post('/unsubscribe', function(req, res) {
     { multi: true },
     function (err, numRemoved) {
       if (err) {
-        console.log(err)
+        console.error('[' + new Date() + '] ' + err)
         return res.send({error: 'Unexpected error'})
       }
       clearToken(deviceToken)

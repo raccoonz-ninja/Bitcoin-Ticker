@@ -15,7 +15,7 @@ class TradePageViewController: UIViewController {
         
         let label = UILabel()
         label.text = "Trade"
-        label.textColor = UIColor(white: 1, alpha: 0.5)
+        label.textColor = UIConfig.appTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(label)
         
