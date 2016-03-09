@@ -54,7 +54,7 @@ var checkPrice = function(next) {
     } catch (err) {
       console.error('[' + new Date() + '] ' + err)
     }
-    setTimeout(checkPrice, next)
+    setTimeout(checkPrice.bind(null, next), next)
   })
 }
 
