@@ -4,6 +4,9 @@
 
 ![Mockup](./mockups/mock.png)
 
+## Sprint 1 - Demo
+<img src='./demo.gif' title='Sprint 1 demo' width=325 alt='Sprint 1 demo' />
+
 ## TODO
 
 Price on main screen
