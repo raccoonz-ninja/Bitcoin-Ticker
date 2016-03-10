@@ -46,16 +46,18 @@ setBadge = function(deviceToken, badgeCount) {
 }
 
 var checkPrice = function(next) {
+  console.log('[' + new Date() + '] Checking price...')
   request('https://api.bitfinex.com/v1/pubticker/BTCUSD', function(err, res, body) {
     try {
       var data = JSON.parse(body)
+      console.log('[' + new Date() + '] $' + data.last_price)
       var last = parseFloat(data.last_price)
       onNewPrice(last)
     } catch (err) {
       console.error('[' + new Date() + '] ' + err)
     }
-    setTimeout(checkPrice.bind(null, next), next)
   })
+  setTimeout(checkPrice.bind(null, next), next)
 }
 
 module.exports = {
