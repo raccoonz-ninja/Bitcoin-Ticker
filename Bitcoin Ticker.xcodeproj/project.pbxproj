@@ -22,6 +22,7 @@
 		2D8D2FF31C8D1559003A2028 /* BitcoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D2FF21C8D1559003A2028 /* BitcoinPrice.swift */; };
 		2D91286B1C8695620086D4E4 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D91286A1C8695620086D4E4 /* Dispatcher.swift */; };
 		2D91286D1C8695E20086D4E4 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D91286C1C8695E20086D4E4 /* ServerService.swift */; };
+		2DD65B621C9241230066DD33 /* Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD65B611C9241230066DD33 /* Trade.swift */; };
 		2DE865731C8E7E6700B28FA4 /* PriceOnAppIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE865721C8E7E6700B28FA4 /* PriceOnAppIconCell.swift */; };
 		2DE8657A1C8E8B2C00B28FA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE865791C8E8B2C00B28FA4 /* LaunchScreen.storyboard */; };
 		3B70E41D41E76BB060149C13 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560AF3D318BE42C55066C745 /* Pods.framework */; };
@@ -45,6 +46,7 @@
 		2D8D2FF21C8D1559003A2028 /* BitcoinPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinPrice.swift; sourceTree = "<group>"; };
 		2D91286A1C8695620086D4E4 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		2D91286C1C8695E20086D4E4 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
+		2DD65B611C9241230066DD33 /* Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trade.swift; sourceTree = "<group>"; };
 		2DE865721C8E7E6700B28FA4 /* PriceOnAppIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceOnAppIconCell.swift; sourceTree = "<group>"; };
 		2DE865791C8E8B2C00B28FA4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		560AF3D318BE42C55066C745 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 			children = (
 				2D8D2FE71C8B87B7003A2028 /* Config.swift */,
 				2D8D2FF21C8D1559003A2028 /* BitcoinPrice.swift */,
+				2DD65B611C9241230066DD33 /* Trade.swift */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				2D8D2FF01C8D13BC003A2028 /* BitcoinPriceService.swift in Sources */,
 				2D80E6D11C8D4FBE00E97D9F /* MainPageViewController.swift in Sources */,
 				2D6CAADD1C85510B00B76138 /* AppDelegate.swift in Sources */,
+				2DD65B621C9241230066DD33 /* Trade.swift in Sources */,
 				2D8D2FE81C8B87B7003A2028 /* Config.swift in Sources */,
 				2D80E6D81C8D65F900E97D9F /* Color.swift in Sources */,
 				2D8D2FF31C8D1559003A2028 /* BitcoinPrice.swift in Sources */,
