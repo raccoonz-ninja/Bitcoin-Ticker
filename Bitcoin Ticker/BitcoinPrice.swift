@@ -9,13 +9,13 @@
 import UIKit
 
 class PriceData: NSObject, NSCoding {
-    let bid: Float
-    let mid: Float
-    let ask: Float
-    let last: Float
-    let low: Float // last 24h low
-    let high: Float // last 24h high
-    let volume: Float // last 24h volume
+    let bid: NSDecimalNumber
+    let mid: NSDecimalNumber
+    let ask: NSDecimalNumber
+    let last: NSDecimalNumber
+    let low: NSDecimalNumber // last 24h low
+    let high: NSDecimalNumber // last 24h high
+    let volume: NSDecimalNumber // last 24h volume
     let timestamp: NSTimeInterval
     override init() {
         self.bid = 0
@@ -28,33 +28,33 @@ class PriceData: NSObject, NSCoding {
         self.timestamp = 0
     }
     init(dictionary: NSDictionary) {
-        self.bid = Float((dictionary["bid"] as? String) ?? "0") ?? 0
-        self.mid = Float((dictionary["mid"] as? String) ?? "0") ?? 0
-        self.ask = Float((dictionary["ask"] as? String) ?? "0") ?? 0
-        self.last = Float((dictionary["last_price"] as? String) ?? "0") ?? 0
-        self.low = Float((dictionary["low"] as? String) ?? "0") ?? 0
-        self.high = Float((dictionary["high"] as? String) ?? "0") ?? 0
-        self.volume = Float((dictionary["volume"] as? String) ?? "0") ?? 0
+        self.bid = NSDecimalNumber(string: (dictionary["bid"] as? String) ?? "0") ?? 0
+        self.mid = NSDecimalNumber(string: (dictionary["mid"] as? String) ?? "0") ?? 0
+        self.ask = NSDecimalNumber(string: (dictionary["ask"] as? String) ?? "0") ?? 0
+        self.last = NSDecimalNumber(string: (dictionary["last_price"] as? String) ?? "0") ?? 0
+        self.low = NSDecimalNumber(string: (dictionary["low"] as? String) ?? "0") ?? 0
+        self.high = NSDecimalNumber(string: (dictionary["high"] as? String) ?? "0") ?? 0
+        self.volume = NSDecimalNumber(string: (dictionary["volume"] as? String) ?? "0") ?? 0
         self.timestamp = Double((dictionary["timestamp"] as? String) ?? "0") ?? 0
     }
     required init?(coder aDecoder: NSCoder) {
-        self.bid = aDecoder.decodeFloatForKey("bid")
-        self.mid = aDecoder.decodeFloatForKey("mid")
-        self.ask = aDecoder.decodeFloatForKey("ask")
-        self.last = aDecoder.decodeFloatForKey("last")
-        self.low = aDecoder.decodeFloatForKey("low")
-        self.high = aDecoder.decodeFloatForKey("high")
-        self.volume = aDecoder.decodeFloatForKey("volume")
+        self.bid = (aDecoder.decodeObjectForKey("bid") as? NSDecimalNumber) ?? 0
+        self.mid = (aDecoder.decodeObjectForKey("mid") as? NSDecimalNumber) ?? 0
+        self.ask = (aDecoder.decodeObjectForKey("ask") as? NSDecimalNumber) ?? 0
+        self.last = (aDecoder.decodeObjectForKey("last") as? NSDecimalNumber) ?? 0
+        self.low = (aDecoder.decodeObjectForKey("low") as? NSDecimalNumber) ?? 0
+        self.high = (aDecoder.decodeObjectForKey("high") as? NSDecimalNumber) ?? 0
+        self.volume = (aDecoder.decodeObjectForKey("volume") as? NSDecimalNumber) ?? 0
         self.timestamp = aDecoder.decodeDoubleForKey("timestamp")
     }
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeFloat(self.bid, forKey: "bid")
-        aCoder.encodeFloat(self.mid, forKey: "mid")
-        aCoder.encodeFloat(self.ask, forKey: "ask")
-        aCoder.encodeFloat(self.last, forKey: "last")
-        aCoder.encodeFloat(self.low, forKey: "low")
-        aCoder.encodeFloat(self.high, forKey: "high")
-        aCoder.encodeFloat(self.volume, forKey: "volume")
+        aCoder.encodeObject(self.bid, forKey: "bid")
+        aCoder.encodeObject(self.mid, forKey: "mid")
+        aCoder.encodeObject(self.ask, forKey: "ask")
+        aCoder.encodeObject(self.last, forKey: "last")
+        aCoder.encodeObject(self.low, forKey: "low")
+        aCoder.encodeObject(self.high, forKey: "high")
+        aCoder.encodeObject(self.volume, forKey: "volume")
         aCoder.encodeDouble(self.timestamp, forKey: "timestamp")
     }
     override var description: String {

@@ -6,22 +6,22 @@
 //  Copyright © 2016 Raccoonz Ninja. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class Trade: NSObject {
-    enum Type {
+    enum TradeType {
         case Buy
         case Sell
     }
 
-    var type: Type
-    var amount: Float
-    var price: Float
+    var type: TradeType
+    var amount: NSDecimalNumber
+    var price: NSDecimalNumber
     var date: NSDate
     var creationDate: NSDate
     var updateDate: NSDate?
 
-    init(type: Type, amount: Float, price: Float, date: NSDate) {
+    init(type: TradeType, amount: NSDecimalNumber, price: NSDecimalNumber, date: NSDate) {
         self.type = type
         self.amount = amount
         self.price = price

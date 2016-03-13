@@ -16,4 +16,5 @@ class UIConfig: NSObject {
     static let pageControlColor = Color.primaryColorLight
     static let currentPriceFont = UIFont.systemFontOfSize(60, weight: UIFontWeightUltraLight)
     
+    static let tradeCellPadding = CGFloat(20)
 }
