@@ -1,11 +1,13 @@
 # Bitcoin Ticker
 
-## Mocks
-
-![Mockup](./mockups/mock.png)
-
 ## Sprint 1 - Demo
 <img src='./demo.gif' title='Sprint 1 demo' width=325 alt='Sprint 1 demo' />
+
+## Sprint 2 - Demo
+<img src='./demo2.gif' title='Sprint 2 demo' alt='Sprint 2 demo' />
+
+## Mocks
+![Mockup](./mockups/mock.png)
 
 ## TODO
 
@@ -22,7 +24,9 @@ Price in widget view
 - [ ] Display bitcoin price info in the widget view
 
 Trades view
-- [ ] Add a basic view to add, remove and list the user trades
+- [x] Add a basic view to add and list the user trades
+- [ ] Add a basic view to remove trades
+- [ ] Add a basic view to update trades
 - [ ] Add touchId protection for the trade view
 - [ ] Add average buy/sell price
 
