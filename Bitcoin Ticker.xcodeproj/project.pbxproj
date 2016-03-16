@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D4D23961C95CE9000D98ACF /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D23951C95CE9000D98ACF /* NSDateExtension.swift */; };
 		2D4D23981C95D0C700D98ACF /* NSDecimalNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D23971C95D0C700D98ACF /* NSDecimalNumberExtension.swift */; };
+		2D5B55C11C99D001002E6EB1 /* TradeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B55C01C99D001002E6EB1 /* TradeList.swift */; };
 		2D6CAADD1C85510B00B76138 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CAADC1C85510B00B76138 /* AppDelegate.swift */; };
 		2D6CAAE41C85510B00B76138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D6CAAE31C85510B00B76138 /* Assets.xcassets */; };
 		2D80E6CD1C8D4BC600E97D9F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D80E6CC1C8D4BC500E97D9F /* RootViewController.swift */; };
@@ -29,12 +30,14 @@
 		2DE865731C8E7E6700B28FA4 /* PriceOnAppIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE865721C8E7E6700B28FA4 /* PriceOnAppIconCell.swift */; };
 		2DE8657A1C8E8B2C00B28FA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE865791C8E8B2C00B28FA4 /* LaunchScreen.storyboard */; };
 		2DEA51B41C9256E20076A39A /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA51B31C9256E20076A39A /* TradeTableViewCell.swift */; };
+		2DFF60C41C9648FD00A1A2B4 /* TradeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF60C31C9648FD00A1A2B4 /* TradeFormViewController.swift */; };
 		3B70E41D41E76BB060149C13 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560AF3D318BE42C55066C745 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D4D23951C95CE9000D98ACF /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		2D4D23971C95D0C700D98ACF /* NSDecimalNumberExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberExtension.swift; sourceTree = "<group>"; };
+		2D5B55C01C99D001002E6EB1 /* TradeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeList.swift; sourceTree = "<group>"; };
 		2D6CAAD91C85510B00B76138 /* Bitcoin Ticker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bitcoin Ticker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D6CAADC1C85510B00B76138 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D6CAAE31C85510B00B76138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 		2DE865721C8E7E6700B28FA4 /* PriceOnAppIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceOnAppIconCell.swift; sourceTree = "<group>"; };
 		2DE865791C8E8B2C00B28FA4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DEA51B31C9256E20076A39A /* TradeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
+		2DFF60C31C9648FD00A1A2B4 /* TradeFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeFormViewController.swift; sourceTree = "<group>"; };
 		560AF3D318BE42C55066C745 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A035C6459B5123467ACD53EA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E882C4975FB719CAC4C055A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				2D8D2FE71C8B87B7003A2028 /* Config.swift */,
 				2D8D2FF21C8D1559003A2028 /* BitcoinPrice.swift */,
 				2DD65B611C9241230066DD33 /* Trade.swift */,
+				2D5B55C01C99D001002E6EB1 /* TradeList.swift */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				2D80E6D21C8D4FCC00E97D9F /* TradePageViewController.swift */,
 				2DD65B631C9246600066DD33 /* TradeTableViewController.swift */,
 				2DEA51B31C9256E20076A39A /* TradeTableViewCell.swift */,
+				2DFF60C31C9648FD00A1A2B4 /* TradeFormViewController.swift */,
 			);
 			name = TradePage;
 			sourceTree = "<group>";
@@ -350,7 +356,9 @@
 				2D80E6CF1C8D4F8700E97D9F /* SettingsPageViewController.swift in Sources */,
 				2D8D2FF01C8D13BC003A2028 /* BitcoinPriceService.swift in Sources */,
 				2DEA51B41C9256E20076A39A /* TradeTableViewCell.swift in Sources */,
+				2DFF60C41C9648FD00A1A2B4 /* TradeFormViewController.swift in Sources */,
 				2DD65B641C9246600066DD33 /* TradeTableViewController.swift in Sources */,
+				2D5B55C11C99D001002E6EB1 /* TradeList.swift in Sources */,
 				2D80E6D11C8D4FBE00E97D9F /* MainPageViewController.swift in Sources */,
 				2D6CAADD1C85510B00B76138 /* AppDelegate.swift in Sources */,
 				2DD65B621C9241230066DD33 /* Trade.swift in Sources */,

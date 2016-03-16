@@ -15,18 +15,21 @@ extension NSDecimalNumber {
     var btcValue: String {
         get {
             let btcFormatter = NSNumberFormatter()
+            btcFormatter.minimumIntegerDigits = 1
             btcFormatter.maximumFractionDigits = 8
             btcFormatter.minimumFractionDigits = 0
-            return btcFormatter.stringFromNumber(self) ?? "0"
+            return "\(btcFormatter.stringFromNumber(self) ?? "0") BTC"
         }
     }
     
     var usdValue: String {
         get {
             let usdFormatter = NSNumberFormatter()
+            usdFormatter.minimumIntegerDigits = 1
             usdFormatter.maximumFractionDigits = 2
             usdFormatter.minimumFractionDigits = 2
-            return usdFormatter.stringFromNumber(self) ?? "0"
+            usdFormatter.usesGroupingSeparator = true
+            return "$\(usdFormatter.stringFromNumber(self) ?? "0")"
         }
     }
     

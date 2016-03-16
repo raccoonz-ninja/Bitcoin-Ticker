@@ -33,7 +33,7 @@ class MainPageViewController: UIViewController {
     
     func updatePrice() {
         let last = BitcoinPrice.last.last
-        self.currentPriceLabel.text = last.strictPositive ? "$\(last.usdValue)" : ""
+        self.currentPriceLabel.text = last.strictPositive ? last.usdValue : ""
     }
 
 }
