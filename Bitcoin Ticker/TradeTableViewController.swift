@@ -18,6 +18,7 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
         
         self.tableView = UITableView(frame: CGRectZero, style: .Plain)
         self.tableView.dataSource = self
+        self.tableView.delegate = self
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.backgroundColor = UIColor.clearColor()
         self.tableView.separatorColor = UIColor.clearColor()
@@ -48,6 +49,32 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .Normal, title: "Delete", handler: self.handleRowAction)
+        deleteAction.backgroundColor = UIConfig.tradeCellDeleteColor
+        
+        let editAction = UITableViewRowAction(style: .Normal, title: "Edit", handler: self.handleRowAction)
+        editAction.backgroundColor = UIConfig.tradeCellEditColor
+        
+        return [deleteAction, editAction]
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            print("Delete")
+        } else {
+            print("Other")
+        }
+    }
+    
+    func handleRowAction(action: UITableViewRowAction, forRowAtIndexPath indexPath: NSIndexPath) {
+        print(action.title)
     }
 
 }

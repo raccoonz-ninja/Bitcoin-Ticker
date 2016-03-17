@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RootViewController: UIViewController, UIScrollViewDelegate {
+class RootViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
 
-    private var scrollView: UIScrollView!
+    private var scrollView: AllowSwipeInTableCellScrollView!
     private var pageControl: UIPageControl!
     private var controllers: [UIViewController]!
     
@@ -32,10 +32,11 @@ class RootViewController: UIViewController, UIScrollViewDelegate {
         self.currentPage = initialPageIndex
         
         // Create the UIScrollView
-        self.scrollView = UIScrollView()
+        self.scrollView = AllowSwipeInTableCellScrollView()
         self.scrollView.delegate = self
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.pagingEnabled = true
+        self.scrollView.bounces = false
         self.scrollView.showsHorizontalScrollIndicator = false
         self.view.addSubview(self.scrollView)
         
@@ -102,4 +103,20 @@ class RootViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
+}
+
+
+class AllowSwipeInTableCellScrollView: UIScrollView, UIGestureRecognizerDelegate {
+    init() {
+        super.init(frame: CGRectZero)
+        self.panGestureRecognizer.delegate = self
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return !(otherGestureRecognizer.view?.superview is UITableViewCell)
+    }
 }

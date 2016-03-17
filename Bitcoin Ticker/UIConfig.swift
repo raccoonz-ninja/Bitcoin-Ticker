@@ -38,6 +38,8 @@ class UIConfig: NSObject {
     static let tradeCellSmallFont = UIFont.systemFontOfSize(12, weight: UIFontWeightRegular)
     static let tradeCellColor = Color.primaryColorLight
     static let tradeCellSubtitleColor = Color.primaryColorMediumLight
+    static let tradeCellDeleteColor = Color.redColor
+    static let tradeCellEditColor = Color.primaryColorLight
     
     static let tradeFormTextColor = Color.primaryColor
     static let tradeFormTextFieldBorderColor = Color.primaryColor
