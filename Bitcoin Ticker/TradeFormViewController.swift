@@ -12,10 +12,13 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
 
     private let backgroundViewTag = 1
     private let contentViewTag = 2
-    private let dateTextfieldTag = 3
+    private let priceTextfieldTag = 3
+    private let dateTextfieldTag = 4
     private let currentDateFormatter = NSDateFormatter()
     private let dateFormatter = NSDateFormatter()
+
     private var date: NSDate?
+    private var priceSet = false
     
     let contentView = UIView()
     var contentViewVConstraint_noKeyboard: NSLayoutConstraint!
@@ -90,6 +93,7 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.priceTextfield.layer.cornerRadius = 3
         self.priceTextfield.textAlignment = .Right
         self.priceTextfield.tintColor = UIConfig.tradeFormTextFieldBorderColor
+        self.priceTextfield.tag = priceTextfieldTag
         self.priceTextfield.keyboardType = .DecimalPad
         self.priceTextfield.delegate = self
         self.contentView.addSubview(self.priceTextfield)
@@ -190,9 +194,9 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         
         // Refresh the price field
         Dispatcher.on(Dispatcher.Event.NewPriceReceived) {
-            self.priceTextfield.text = BitcoinPrice.last.last.usdValue
+            self.updatePriceTextField()
         }
-        self.priceTextfield.text = BitcoinPrice.last.last.usdValue
+        self.updatePriceTextField()
         self.amountTextfield.text = "0.1"
     }
     
@@ -259,6 +263,12 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func updatePriceTextField() {
+        if !self.priceSet {
+            self.priceTextfield.text = BitcoinPrice.last.last.usdValue
+        }
+    }
+    
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         let isDateTextfield = textField.tag == dateTextfieldTag
         if isDateTextfield {
@@ -272,6 +282,9 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField) {
         self.updateContentViewConstraint(true)
         self.updateDatePickerConstraint(false)
+        if textField.tag == self.priceTextfieldTag {
+            self.priceSet = true
+        }
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
