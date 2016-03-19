@@ -16,6 +16,7 @@ class TradePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tradeTableViewController.tradePageViewController = self
         let view = self.tradeTableViewController.view
         view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(view)

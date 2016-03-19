@@ -12,6 +12,9 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
     
     private var tableView: UITableView!
     private let tradeCellIdentifier = "tradeCellIdentifier"
+    private var preventNextReload = false
+    
+    var tradePageViewController: TradePageViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,14 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
         self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0))
         
         Dispatcher.on(Dispatcher.Event.TradesUpdated) {
+            self.reloadTable()
+        }
+    }
+    
+    func reloadTable() {
+        if self.preventNextReload {
+            self.preventNextReload = false
+        } else {
             self.tableView.reloadData()
         }
     }
@@ -56,25 +67,27 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .Normal, title: "Delete", handler: self.handleRowAction)
+        let deleteAction = UITableViewRowAction(style: .Normal, title: "Delete", handler: self.handleDelete)
         deleteAction.backgroundColor = UIConfig.tradeCellDeleteColor
         
-        let editAction = UITableViewRowAction(style: .Normal, title: "Edit", handler: self.handleRowAction)
+        let editAction = UITableViewRowAction(style: .Normal, title: "Edit", handler: self.handleEdit)
         editAction.backgroundColor = UIConfig.tradeCellEditColor
         
         return [deleteAction, editAction]
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            print("Delete")
-        } else {
-            print("Other")
-        }
+    func handleDelete(action: UITableViewRowAction, forRowAtIndexPath indexPath: NSIndexPath) {
+        self.preventNextReload = true
+        TradeList.remove(TradeList.trades[indexPath.row].id)
+        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
     }
     
-    func handleRowAction(action: UITableViewRowAction, forRowAtIndexPath indexPath: NSIndexPath) {
-        print(action.title)
+    func handleEdit(action: UITableViewRowAction, forRowAtIndexPath indexPath: NSIndexPath) {
+        let tradeForm = TradeFormViewController()
+        tradeForm.setTradeToEdit(TradeList.trades[indexPath.row])
+        if let vc = self.tradePageViewController {
+            vc.presentViewController(tradeForm, animated: true, completion: nil)
+        }
     }
 
 }

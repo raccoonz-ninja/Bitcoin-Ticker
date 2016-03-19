@@ -23,8 +23,8 @@ class TradeList: NSObject {
         }
         set(newTrades) {
             _trades = newTrades
-            Dispatcher.trigger(Dispatcher.Event.TradesUpdated, payload: nil)
             syncToDisk()
+            Dispatcher.trigger(Dispatcher.Event.TradesUpdated, payload: nil)
         }
     }
     
@@ -35,6 +35,26 @@ class TradeList: NSObject {
             t1.date.compare(t2.date) == NSComparisonResult.OrderedDescending
         }
         TradeList.trades = newTrades
+    }
+    
+    static func update(trade: Trade) {
+        var newTrades = self._trades
+        if let index = newTrades.indexOf({ (t: Trade) in
+            return t.id == trade.id
+        }) {
+            newTrades[index] = trade
+            TradeList.trades = newTrades
+        }
+    }
+    
+    static func remove(tradeId: Int) {
+        var newTrades = self._trades
+        if let index = newTrades.indexOf({ (t: Trade) in
+            return t.id == tradeId
+        }) {
+            newTrades.removeAtIndex(index)
+            TradeList.trades = newTrades
+        }
     }
     
     

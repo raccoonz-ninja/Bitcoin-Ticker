@@ -23,7 +23,7 @@ class Trade: NSObject, NSCoding {
     var updateDate: NSDate?
 
     init(type: TradeType, amount: NSDecimalNumber, price: NSDecimalNumber, date: NSDate) {
-        self.id = random()
+        self.id = Int(arc4random())
         self.type = type
         self.amount = amount
         self.price = price

@@ -18,7 +18,17 @@ extension NSDecimalNumber {
             btcFormatter.minimumIntegerDigits = 1
             btcFormatter.maximumFractionDigits = 8
             btcFormatter.minimumFractionDigits = 0
-            return "\(btcFormatter.stringFromNumber(self) ?? "0") BTC"
+            return "\(self.btcValueWithoutSymbol) BTC"
+        }
+    }
+    
+    var btcValueWithoutSymbol: String {
+        get {
+            let btcFormatter = NSNumberFormatter()
+            btcFormatter.minimumIntegerDigits = 1
+            btcFormatter.maximumFractionDigits = 8
+            btcFormatter.minimumFractionDigits = 0
+            return btcFormatter.stringFromNumber(self) ?? "0"
         }
     }
     

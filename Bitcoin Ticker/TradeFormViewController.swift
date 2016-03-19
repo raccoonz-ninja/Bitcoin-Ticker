@@ -10,6 +10,8 @@ import UIKit
 
 class TradeFormViewController: UIViewController, UITextFieldDelegate {
 
+    private var tradeToEdit: Trade?
+    
     private let backgroundViewTag = 1
     private let contentViewTag = 2
     private let priceTextfieldTag = 3
@@ -40,6 +42,18 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
     
     let buyButton = UIButton()
     let sellButton = UIButton()
+    
+    func setTradeToEdit(trade: Trade) {
+        self.tradeToEdit = trade
+        
+        self.priceSet = true
+        self.date = trade.date
+        
+        self.amountTextfield.text = trade.amount.btcValueWithoutSymbol
+        self.priceTextfield.text = trade.price.usdValue
+        self.dateDatePicker.date = trade.date
+        self.updateDateTextField()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,7 +211,9 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
             self.updatePriceTextField()
         }
         self.updatePriceTextField()
-        self.amountTextfield.text = "0.1"
+        if self.tradeToEdit == nil {
+            self.amountTextfield.text = "0.1"
+        }
     }
     
     func closeKeyboard() -> Bool {
@@ -329,8 +345,16 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
     func createTrade(tradeType: Trade.TradeType) {
         if let amount = parseNumber(self.amountTextfield.text ?? "0"), let price = parseNumber(self.priceTextfield.text ?? "0") {
             let date = self.date ?? NSDate(timeIntervalSinceNow: 0)
-            let trade = Trade(type: tradeType, amount: amount, price: price, date: date)
-            TradeList.add(trade)
+            if let trade = self.tradeToEdit {
+                trade.type = tradeType
+                trade.amount = amount
+                trade.price = price
+                trade.date = date
+                TradeList.update(trade)
+            } else {
+                let trade = Trade(type: tradeType, amount: amount, price: price, date: date)
+                TradeList.add(trade)
+            }
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
