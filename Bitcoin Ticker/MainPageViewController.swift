@@ -11,6 +11,7 @@ import UIKit
 class MainPageViewController: UIViewController {
 
     private var currentPriceLabel: UILabel!
+    private var lastUpdateLabel: LiveLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,22 +19,32 @@ class MainPageViewController: UIViewController {
         self.currentPriceLabel = UILabel()
         self.currentPriceLabel.text = ""
         self.currentPriceLabel.font = UIConfig.currentPriceFont
-        self.currentPriceLabel.textColor = UIConfig.appTextColor
+        self.currentPriceLabel.textColor = UIConfig.currentPriceColor
         self.currentPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.currentPriceLabel)
         
+        self.lastUpdateLabel = LiveLabel()
+        self.lastUpdateLabel.font = UIConfig.lastUpdateFont
+        self.lastUpdateLabel.textColor = UIConfig.lastUpdateColor
+        self.lastUpdateLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.lastUpdateLabel)
+        
         self.view.addConstraint(NSLayoutConstraint(item: self.currentPriceLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0))
-        self.view.addConstraint(NSLayoutConstraint(item: self.currentPriceLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(item: self.currentPriceLabel, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: 0))
+        
+        self.view.addConstraint(NSLayoutConstraint(item: self.lastUpdateLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(item: self.lastUpdateLabel, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: 0))
 
         self.updatePrice()
-        Dispatcher.on(Dispatcher.Event.NewPriceReceived) { () -> Void in
+        Dispatcher.on(Dispatcher.Event.NewPriceFetched) { () -> Void in
             self.updatePrice()
         }
     }
     
     func updatePrice() {
-        let last = BitcoinPrice.last.last
-        self.currentPriceLabel.text = last.strictPositive ? last.usdValue : ""
+        let last = BitcoinPrice.last
+        self.currentPriceLabel.text = last.last.strictPositive ? last.last.usdValue : ""
+        self.lastUpdateLabel.date = NSDate(timeIntervalSince1970: last.timestamp)
     }
 
 }

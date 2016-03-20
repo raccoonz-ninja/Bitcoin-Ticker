@@ -207,7 +207,7 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateDateTextField", userInfo: nil, repeats: true)
         
         // Refresh the price field
-        Dispatcher.on(Dispatcher.Event.NewPriceReceived) {
+        Dispatcher.on(Dispatcher.Event.NewPriceFetched) {
             self.updatePriceTextField()
         }
         self.updatePriceTextField()

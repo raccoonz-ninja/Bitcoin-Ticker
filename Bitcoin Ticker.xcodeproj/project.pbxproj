@@ -36,6 +36,7 @@
 		2DEB01561C9E1DFB003D6DF8 /* Bitcoin Price.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2DEB014A1C9E1DFB003D6DF8 /* Bitcoin Price.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2DEB015C1C9E1F9F003D6DF8 /* BitcoinPriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB015B1C9E1F9F003D6DF8 /* BitcoinPriceService.swift */; };
 		2DEB015E1C9E216D003D6DF8 /* NSDecimalNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB015D1C9E216D003D6DF8 /* NSDecimalNumberExtension.swift */; };
+		2DEB01611C9E2474003D6DF8 /* LiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB01601C9E2474003D6DF8 /* LiveLabel.swift */; };
 		2DFF60C41C9648FD00A1A2B4 /* TradeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF60C31C9648FD00A1A2B4 /* TradeFormViewController.swift */; };
 		3B70E41D41E76BB060149C13 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560AF3D318BE42C55066C745 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		2DEB01531C9E1DFB003D6DF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DEB015B1C9E1F9F003D6DF8 /* BitcoinPriceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinPriceService.swift; sourceTree = "<group>"; };
 		2DEB015D1C9E216D003D6DF8 /* NSDecimalNumberExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberExtension.swift; sourceTree = "<group>"; };
+		2DEB01601C9E2474003D6DF8 /* LiveLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveLabel.swift; sourceTree = "<group>"; };
 		2DFF60C31C9648FD00A1A2B4 /* TradeFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeFormViewController.swift; sourceTree = "<group>"; };
 		560AF3D318BE42C55066C745 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A035C6459B5123467ACD53EA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		2DE865741C8E881800B28FA4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2DEB015F1C9E2459003D6DF8 /* Core */,
 				2DE865771C8E884100B28FA4 /* TradePage */,
 				2DE865761C8E883800B28FA4 /* MainPage */,
 				2DE865751C8E882C00B28FA4 /* SettingsPage */,
@@ -258,6 +261,14 @@
 				2DEB015D1C9E216D003D6DF8 /* NSDecimalNumberExtension.swift */,
 			);
 			path = "Bitcoin Price";
+			sourceTree = "<group>";
+		};
+		2DEB015F1C9E2459003D6DF8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2DEB01601C9E2474003D6DF8 /* LiveLabel.swift */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 		5C23ECD8EC97622E5A3F8F87 /* Pods */ = {
@@ -453,6 +464,7 @@
 				2D5B55C11C99D001002E6EB1 /* TradeList.swift in Sources */,
 				2D80E6D11C8D4FBE00E97D9F /* MainPageViewController.swift in Sources */,
 				2D6CAADD1C85510B00B76138 /* AppDelegate.swift in Sources */,
+				2DEB01611C9E2474003D6DF8 /* LiveLabel.swift in Sources */,
 				2DD65B621C9241230066DD33 /* Trade.swift in Sources */,
 				2D8D2FE81C8B87B7003A2028 /* Config.swift in Sources */,
 				2D80E6D81C8D65F900E97D9F /* Color.swift in Sources */,

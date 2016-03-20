@@ -40,7 +40,7 @@ class BitcoinPriceService: NSObject {
                 let price = PriceData(dictionary: dict)
                 if price.timestamp > BitcoinPrice.last.timestamp {
                     BitcoinPrice.last = price
-                    Dispatcher.trigger(Dispatcher.Event.NewPriceReceived, payload: nil)
+                    Dispatcher.trigger(Dispatcher.Event.NewPriceFetched, payload: nil)
                 }
             }
         }, failure: nil)

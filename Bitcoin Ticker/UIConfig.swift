@@ -25,6 +25,9 @@ class UIConfig: NSObject {
     // Main Page
     // ---------
     static let currentPriceFont = UIFont.systemFontOfSize(60, weight: UIFontWeightUltraLight)
+    static let currentPriceColor = Color.primaryColorLight
+    static let lastUpdateFont = UIFont.systemFontOfSize(15, weight: UIFontWeightRegular)
+    static let lastUpdateColor = Color.primaryColorMediumLight
     
     
     // Trade Page

@@ -13,7 +13,7 @@ class TradeTableViewCell: UITableViewCell {
     private var trade: Trade!
     
     private let titleLabel = UILabel()
-    private let timeLabel = UILabel()
+    private let timeLabel = LiveLabel()
     private let btcAmountLabel = UILabel()
     private let usdAmountLabel = UILabel()
     
@@ -72,7 +72,7 @@ class TradeTableViewCell: UITableViewCell {
         }
         
         self.titleLabel.text = "\(verb) at \(price)"
-        self.timeLabel.text = trade.date.fromNow()
+        self.timeLabel.date = trade.date
         self.btcAmountLabel.text = sign + trade.amount.btcValue
         self.usdAmountLabel.text = usdAmount.usdValue
     }

@@ -18,7 +18,7 @@ class Dispatcher: NSObject {
     enum Event: String {
         case DeviceTokenReceived = "DeviceTokenReceived"
         case DeviceTokenFailure = "DeviceTokenFailure"
-        case NewPriceReceived = "NewPriceReceived"
+        case NewPriceFetched = "NewPriceFetched"
         case TradesUpdated = "TradesUpdated"
     }
     
