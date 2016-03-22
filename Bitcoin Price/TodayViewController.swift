@@ -14,19 +14,28 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     private static let notificationCenter = NSNotificationCenter.defaultCenter()
     
     @IBOutlet weak var bitcoinPrice: UILabel!
+    @IBOutlet weak var lastUpdateLabel: LiveLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.preferredContentSize = CGSizeMake(0, 100)
+        self.preferredContentSize = CGSizeMake(0, 120)
         self.bitcoinPrice.translatesAutoresizingMaskIntoConstraints = false
         self.bitcoinPrice.text = ""
+        self.lastUpdateLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.lastUpdateLabel.textColor = UIColor(white: 1, alpha: 0.4)
+        self.lastUpdateLabel.font = UIFont.systemFontOfSize(14.0)
+        self.lastUpdateLabel.template = ""
         BitcoinPriceService.start()
         TodayViewController.notificationCenter.addObserver(self, selector: "updatePrice:", name: "price_update", object: nil)
     }
     
     func updatePrice(notification: NSNotification) {
-        if let price = notification.object as? NSDecimalNumber {
-            self.bitcoinPrice.text = price.usdValue
+        dispatch_async(dispatch_get_main_queue()) {
+            if let price = notification.object as? NSDecimalNumber {
+                self.bitcoinPrice.text = price.usdValue
+                self.lastUpdateLabel.date = NSDate()
+                self.lastUpdateLabel.template = "Updated %TIME%"
+            }
         }
     }
     
@@ -41,7 +50,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        print(defaultMarginInsets)
         return UIEdgeInsetsZero
     }
     

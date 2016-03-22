@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D27B86F1CA0E2840050F95F /* TradeTouchIdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27B86E1CA0E2840050F95F /* TradeTouchIdCell.swift */; };
+		2D27B8711CA0E9BF0050F95F /* LiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27B8701CA0E9BF0050F95F /* LiveLabel.swift */; };
+		2D27B8731CA0E9DE0050F95F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27B8721CA0E9DE0050F95F /* NSDateExtension.swift */; };
 		2D4D23961C95CE9000D98ACF /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D23951C95CE9000D98ACF /* NSDateExtension.swift */; };
 		2D4D23981C95D0C700D98ACF /* NSDecimalNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D23971C95D0C700D98ACF /* NSDecimalNumberExtension.swift */; };
 		2D5B55C11C99D001002E6EB1 /* TradeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B55C01C99D001002E6EB1 /* TradeList.swift */; };
@@ -37,8 +40,11 @@
 		2DEB015C1C9E1F9F003D6DF8 /* BitcoinPriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB015B1C9E1F9F003D6DF8 /* BitcoinPriceService.swift */; };
 		2DEB015E1C9E216D003D6DF8 /* NSDecimalNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB015D1C9E216D003D6DF8 /* NSDecimalNumberExtension.swift */; };
 		2DEB01611C9E2474003D6DF8 /* LiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB01601C9E2474003D6DF8 /* LiveLabel.swift */; };
+		2DEB01631C9E2ABC003D6DF8 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEB01621C9E2ABC003D6DF8 /* LocalAuthentication.framework */; };
 		2DFF60C41C9648FD00A1A2B4 /* TradeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF60C31C9648FD00A1A2B4 /* TradeFormViewController.swift */; };
 		3B70E41D41E76BB060149C13 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560AF3D318BE42C55066C745 /* Pods.framework */; };
+		6650EC688FDA241CCD0141BA /* Pods_Bitcoin_Price.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91022FCDA78567F93399DEEB /* Pods_Bitcoin_Price.framework */; };
+		8FE0A713EAD204CEA1EB0912 /* Pods_Bitcoin_Ticker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82795405463FFCCF7AF8FCBB /* Pods_Bitcoin_Ticker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +72,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D27B86E1CA0E2840050F95F /* TradeTouchIdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeTouchIdCell.swift; sourceTree = "<group>"; };
+		2D27B8701CA0E9BF0050F95F /* LiveLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveLabel.swift; sourceTree = "<group>"; };
+		2D27B8721CA0E9DE0050F95F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		2D4D23951C95CE9000D98ACF /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		2D4D23971C95D0C700D98ACF /* NSDecimalNumberExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberExtension.swift; sourceTree = "<group>"; };
 		2D5B55C01C99D001002E6EB1 /* TradeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeList.swift; sourceTree = "<group>"; };
@@ -99,10 +108,17 @@
 		2DEB015B1C9E1F9F003D6DF8 /* BitcoinPriceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinPriceService.swift; sourceTree = "<group>"; };
 		2DEB015D1C9E216D003D6DF8 /* NSDecimalNumberExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberExtension.swift; sourceTree = "<group>"; };
 		2DEB01601C9E2474003D6DF8 /* LiveLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveLabel.swift; sourceTree = "<group>"; };
+		2DEB01621C9E2ABC003D6DF8 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		2DFF60C31C9648FD00A1A2B4 /* TradeFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeFormViewController.swift; sourceTree = "<group>"; };
+		3270E5E574669375BD49C492 /* Pods-Bitcoin Price.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitcoin Price.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bitcoin Price/Pods-Bitcoin Price.release.xcconfig"; sourceTree = "<group>"; };
 		560AF3D318BE42C55066C745 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72284ED18C83D03C2C4EECA3 /* Pods-Bitcoin Ticker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitcoin Ticker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bitcoin Ticker/Pods-Bitcoin Ticker.release.xcconfig"; sourceTree = "<group>"; };
+		82795405463FFCCF7AF8FCBB /* Pods_Bitcoin_Ticker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitcoin_Ticker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88D24ED4D30CDBE48881E76D /* Pods-Bitcoin Ticker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitcoin Ticker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bitcoin Ticker/Pods-Bitcoin Ticker.debug.xcconfig"; sourceTree = "<group>"; };
+		91022FCDA78567F93399DEEB /* Pods_Bitcoin_Price.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitcoin_Price.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A035C6459B5123467ACD53EA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E882C4975FB719CAC4C055A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F623F52C0500747DAA7F2F35 /* Pods-Bitcoin Price.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitcoin Price.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bitcoin Price/Pods-Bitcoin Price.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +126,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DEB01631C9E2ABC003D6DF8 /* LocalAuthentication.framework in Frameworks */,
 				3B70E41D41E76BB060149C13 /* Pods.framework in Frameworks */,
+				8FE0A713EAD204CEA1EB0912 /* Pods_Bitcoin_Ticker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DEB014C1C9E1DFB003D6DF8 /* NotificationCenter.framework in Frameworks */,
+				6650EC688FDA241CCD0141BA /* Pods_Bitcoin_Price.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,8 +147,11 @@
 		12167F6F76F1B62F5B1B046D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DEB01621C9E2ABC003D6DF8 /* LocalAuthentication.framework */,
 				560AF3D318BE42C55066C745 /* Pods.framework */,
 				2DEB014B1C9E1DFB003D6DF8 /* NotificationCenter.framework */,
+				91022FCDA78567F93399DEEB /* Pods_Bitcoin_Price.framework */,
+				82795405463FFCCF7AF8FCBB /* Pods_Bitcoin_Ticker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -226,6 +248,7 @@
 		2DE865751C8E882C00B28FA4 /* SettingsPage */ = {
 			isa = PBXGroup;
 			children = (
+				2D27B86E1CA0E2840050F95F /* TradeTouchIdCell.swift */,
 				2DE865721C8E7E6700B28FA4 /* PriceOnAppIconCell.swift */,
 				2D80E6CE1C8D4F8700E97D9F /* SettingsPageViewController.swift */,
 			);
@@ -256,9 +279,11 @@
 			children = (
 				2DEB014E1C9E1DFB003D6DF8 /* TodayViewController.swift */,
 				2DEB015B1C9E1F9F003D6DF8 /* BitcoinPriceService.swift */,
+				2DEB015D1C9E216D003D6DF8 /* NSDecimalNumberExtension.swift */,
+				2D27B8721CA0E9DE0050F95F /* NSDateExtension.swift */,
+				2D27B8701CA0E9BF0050F95F /* LiveLabel.swift */,
 				2DEB01501C9E1DFB003D6DF8 /* MainInterface.storyboard */,
 				2DEB01531C9E1DFB003D6DF8 /* Info.plist */,
-				2DEB015D1C9E216D003D6DF8 /* NSDecimalNumberExtension.swift */,
 			);
 			path = "Bitcoin Price";
 			sourceTree = "<group>";
@@ -276,6 +301,10 @@
 			children = (
 				E882C4975FB719CAC4C055A5 /* Pods.debug.xcconfig */,
 				A035C6459B5123467ACD53EA /* Pods.release.xcconfig */,
+				F623F52C0500747DAA7F2F35 /* Pods-Bitcoin Price.debug.xcconfig */,
+				3270E5E574669375BD49C492 /* Pods-Bitcoin Price.release.xcconfig */,
+				88D24ED4D30CDBE48881E76D /* Pods-Bitcoin Ticker.debug.xcconfig */,
+				72284ED18C83D03C2C4EECA3 /* Pods-Bitcoin Ticker.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -310,9 +339,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2DEB01591C9E1DFB003D6DF8 /* Build configuration list for PBXNativeTarget "Bitcoin Price" */;
 			buildPhases = (
+				F8E94ED50B24BF0339A85F0D /* Check Pods Manifest.lock */,
 				2DEB01461C9E1DFB003D6DF8 /* Sources */,
 				2DEB01471C9E1DFB003D6DF8 /* Frameworks */,
 				2DEB01481C9E1DFB003D6DF8 /* Resources */,
+				3E26B0DC646E5131DC4075F7 /* Embed Pods Frameworks */,
+				ED36EEFBBC833E52F374657C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -400,7 +432,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bitcoin Ticker/Pods-Bitcoin Ticker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1D680E91751E35EC65824FF8 /* Copy Pods Resources */ = {
@@ -415,7 +447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bitcoin Ticker/Pods-Bitcoin Ticker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2DE865781C8E8A4000B28FA4 /* ShellScript */ = {
@@ -431,7 +463,52 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 6c13e3e11a63c57a17ffc6ce926c058d4927d4b5 5a2c0f72086f647d479edd36e5e169cc4109f45b848062a59ccdab7257b7d3b3";
 		};
+		3E26B0DC646E5131DC4075F7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bitcoin Price/Pods-Bitcoin Price-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C60654CB764E6EEA2A4AF804 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ED36EEFBBC833E52F374657C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bitcoin Price/Pods-Bitcoin Price-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8E94ED50B24BF0339A85F0D /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -470,6 +547,7 @@
 				2D80E6D81C8D65F900E97D9F /* Color.swift in Sources */,
 				2D8D2FF31C8D1559003A2028 /* BitcoinPrice.swift in Sources */,
 				2D4D23981C95D0C700D98ACF /* NSDecimalNumberExtension.swift in Sources */,
+				2D27B86F1CA0E2840050F95F /* TradeTouchIdCell.swift in Sources */,
 				2D80E6D51C8D65C700E97D9F /* UIConfig.swift in Sources */,
 				2D91286D1C8695E20086D4E4 /* ServerService.swift in Sources */,
 				2D8D2FEE1C8D11A0003A2028 /* NSErrorExtension.swift in Sources */,
@@ -484,7 +562,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DEB015E1C9E216D003D6DF8 /* NSDecimalNumberExtension.swift in Sources */,
+				2D27B8731CA0E9DE0050F95F /* NSDateExtension.swift in Sources */,
 				2DEB015C1C9E1F9F003D6DF8 /* BitcoinPriceService.swift in Sources */,
+				2D27B8711CA0E9BF0050F95F /* LiveLabel.swift in Sources */,
 				2DEB014F1C9E1DFB003D6DF8 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,7 +674,7 @@
 		};
 		2D6CAAEC1C85510B00B76138 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E882C4975FB719CAC4C055A5 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 88D24ED4D30CDBE48881E76D /* Pods-Bitcoin Ticker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -609,7 +689,7 @@
 		};
 		2D6CAAED1C85510B00B76138 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A035C6459B5123467ACD53EA /* Pods.release.xcconfig */;
+			baseConfigurationReference = 72284ED18C83D03C2C4EECA3 /* Pods-Bitcoin Ticker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -624,6 +704,7 @@
 		};
 		2DEB01571C9E1DFB003D6DF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F623F52C0500747DAA7F2F35 /* Pods-Bitcoin Price.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Bitcoin Price/Info.plist";
@@ -636,6 +717,7 @@
 		};
 		2DEB01581C9E1DFB003D6DF8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3270E5E574669375BD49C492 /* Pods-Bitcoin Price.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Bitcoin Price/Info.plist";
@@ -674,6 +756,7 @@
 				2DEB01581C9E1DFB003D6DF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

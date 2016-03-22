@@ -17,6 +17,7 @@ class PriceData: NSObject, NSCoding {
     let high: NSDecimalNumber // last 24h high
     let volume: NSDecimalNumber // last 24h volume
     let timestamp: NSTimeInterval
+    let creationDate: NSDate
     override init() {
         self.bid = 0
         self.mid = 0
@@ -26,6 +27,7 @@ class PriceData: NSObject, NSCoding {
         self.high = 0
         self.volume = 0
         self.timestamp = 0
+        self.creationDate = NSDate(timeIntervalSinceNow: 0)
     }
     init(dictionary: NSDictionary) {
         self.bid = NSDecimalNumber(string: (dictionary["bid"] as? String) ?? "0") ?? 0
@@ -36,6 +38,7 @@ class PriceData: NSObject, NSCoding {
         self.high = NSDecimalNumber(string: (dictionary["high"] as? String) ?? "0") ?? 0
         self.volume = NSDecimalNumber(string: (dictionary["volume"] as? String) ?? "0") ?? 0
         self.timestamp = Double((dictionary["timestamp"] as? String) ?? "0") ?? 0
+        self.creationDate = NSDate(timeIntervalSinceNow: 0)
     }
     required init?(coder aDecoder: NSCoder) {
         self.bid = (aDecoder.decodeObjectForKey("bid") as? NSDecimalNumber) ?? 0
@@ -46,6 +49,7 @@ class PriceData: NSObject, NSCoding {
         self.high = (aDecoder.decodeObjectForKey("high") as? NSDecimalNumber) ?? 0
         self.volume = (aDecoder.decodeObjectForKey("volume") as? NSDecimalNumber) ?? 0
         self.timestamp = aDecoder.decodeDoubleForKey("timestamp")
+        self.creationDate = (aDecoder.decodeObjectForKey("creationDate") as? NSDate) ?? NSDate(timeIntervalSinceNow: 0)
     }
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.bid, forKey: "bid")
@@ -56,6 +60,7 @@ class PriceData: NSObject, NSCoding {
         aCoder.encodeObject(self.high, forKey: "high")
         aCoder.encodeObject(self.volume, forKey: "volume")
         aCoder.encodeDouble(self.timestamp, forKey: "timestamp")
+        aCoder.encodeObject(self.creationDate, forKey: "creationDate")
     }
     override var description: String {
         return "BitcoinPrice:" +
@@ -66,7 +71,8 @@ class PriceData: NSObject, NSCoding {
             "\n\tlow: \(self.low)" +
             "\n\thigh: \(self.high)" +
             "\n\tvolume: \(self.volume)" +
-            "\n\ttimestamp: \(self.timestamp)"
+            "\n\ttimestamp: \(self.timestamp)" +
+            "\n\tcreationDate: \(self.creationDate)"
     }
 }
 

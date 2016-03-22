@@ -15,21 +15,21 @@ class RootViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
     private var controllers: [UIViewController]!
     
     private let initialPageIndex = 1
-    private var currentPage: Int!
+    private var currentPage: Int = 0
     private var scrollEnabled: Bool = true
+    
+    private let settingsPage = SettingsPageViewController()
+    private let mainPage = MainPageViewController()
+    private let tradePage = TradePageViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Create the controllers
-        self.controllers = [
-            SettingsPageViewController(),
-            MainPageViewController(),
-            TradePageViewController()
-        ]
+        self.controllers = [settingsPage, mainPage, tradePage]
         
         let pageCount = self.controllers.count
-        self.currentPage = initialPageIndex
+        self.setCurrentPage(initialPageIndex)
         
         // Create the UIScrollView
         self.scrollView = AllowSwipeInTableCellScrollView()
@@ -98,8 +98,17 @@ class RootViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         // Keep the UIPageControl in sync with the UIScrollView position
         if self.scrollEnabled {
             let pageWidth = self.view.frame.width
-            self.currentPage = Int(round(scrollView.contentOffset.x / pageWidth))
+            self.setCurrentPage(Int(round(scrollView.contentOffset.x / pageWidth)))
             self.pageControl.currentPage = currentPage
+        }
+    }
+    
+    func setCurrentPage(currentPage: Int) {
+        if self.currentPage != currentPage {
+            self.currentPage = currentPage
+            if currentPage == 2 {
+                self.tradePage.isShown()
+            }
         }
     }
 

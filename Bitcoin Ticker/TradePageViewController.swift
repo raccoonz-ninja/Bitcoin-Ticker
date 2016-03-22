@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class TradePageViewController: UIViewController {
 
     private var tradeTableViewController = TradeTableViewController()
     private var addButton = UILabel()
+    private var lockScreen = UIView()
+    static var locked = Config.touchIdProtection
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,10 @@ class TradePageViewController: UIViewController {
         self.addButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.addButton)
         
+        self.lockScreen.backgroundColor = UIConfig.appBackgroundColor
+        self.lockScreen.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.lockScreen)
+        
         self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 50))
         self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0))
@@ -38,6 +45,44 @@ class TradePageViewController: UIViewController {
         
         self.view.addConstraint(NSLayoutConstraint(item: self.addButton, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: -UIConfig.tradeCellHPadding))
         self.view.addConstraint(NSLayoutConstraint(item: self.addButton, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: UIConfig.tradeCellHPadding))
+        
+        self.view.addConstraint(NSLayoutConstraint(item: self.lockScreen, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(item: self.lockScreen, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(item: self.lockScreen, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(item: self.lockScreen, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 0))
+        
+        self.view.bringSubviewToFront(self.lockScreen)
+        self.setLocked(TradePageViewController.locked)
+    }
+    
+    func isShown() {
+        setLocked(TradePageViewController.locked)
+        if TradePageViewController.locked {
+            let context = LAContext()
+            var error: NSError?
+            if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &error) {
+                context.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: "Access to your trades", reply: { (success: Bool, error: NSError?) -> Void in
+                    if error != nil {
+                        self.setLocked(true)
+                    } else {
+                        self.setLocked(false)
+                    }
+                })
+            }
+        }
+    }
+    
+    func setLocked(locked: Bool) {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            TradePageViewController.locked = locked
+            if TradePageViewController.locked {
+                self.lockScreen.layer.opacity = 1
+            } else {
+                UIView.animateWithDuration(UIConfig.lockScreenFadeOutDuration, animations: { () -> Void in
+                    self.lockScreen.layer.opacity = 0
+                })
+            }
+        }
     }
     
     func disableInteraction(view: UIView) {

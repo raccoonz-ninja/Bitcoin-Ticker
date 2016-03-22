@@ -57,6 +57,22 @@ class TradeList: NSObject {
         }
     }
     
+//    static func average() -> Trade {
+//        var totalBTCBought = NSDecimalNumber.zero()
+//        var totalSpentBuying = NSDecimalNumber.zero()
+//        var totalBTCSold = NSDecimalNumber.zero()
+//        var totalEarnedSelling = NSDecimalNumber.zero()
+//        for trade in TradeList.trades {
+//            if trade.type == Trade.TradeType.Buy {
+//                totalBTCBought = totalBTCBought.decimalNumberByAdding(trade.amount)
+//                totalSpentBuying = totalSpentBuying.decimalNumberByAdding(trade.amount.decimalNumberByMultiplyingBy(trade.price))
+//            } else if trade.type == Trade.TradeType.Sell {
+//                totalBTCSold = totalBTCSold.decimalNumberByAdding(trade.amount)
+//                totalEarnedSelling = totalEarnedSelling.decimalNumberByAdding(trade.amount.decimalNumberByMultiplyingBy(trade.price))
+//            }
+//        }
+//    }
+    
     
     // Private utilities
     private static func loadIfNeeded() {

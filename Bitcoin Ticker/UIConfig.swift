@@ -32,6 +32,8 @@ class UIConfig: NSObject {
     
     // Trade Page
     // ----------
+    static let lockScreenFadeOutDuration = 0.6
+    
     static let tradeAddButtonColor = Color.primaryColorLight
     static let tradeAddButtonFontSize = UIFont.systemFontOfSize(30, weight: UIFontWeightThin)
 

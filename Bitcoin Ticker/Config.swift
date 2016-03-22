@@ -14,17 +14,21 @@ class Config: NSObject {
     private class ConfigData: NSObject, NSCoding {
         var deviceToken: String?
         var priceOnAppIcon: Bool
+        var touchIdProtection: Bool
         override init() {
             self.deviceToken = nil
             self.priceOnAppIcon = false
+            self.touchIdProtection = false
         }
         @objc required init?(coder aDecoder: NSCoder) {
             self.deviceToken = aDecoder.decodeObjectForKey("deviceToken") as? String
             self.priceOnAppIcon = aDecoder.decodeBoolForKey("priceOnAppIcon")
+            self.touchIdProtection = aDecoder.decodeBoolForKey("touchIdProtection")
         }
         @objc func encodeWithCoder(aCoder: NSCoder) {
             aCoder.encodeObject(self.deviceToken, forKey: "deviceToken")
             aCoder.encodeBool(self.priceOnAppIcon, forKey: "priceOnAppIcon")
+            aCoder.encodeBool(self.touchIdProtection, forKey: "touchIdProtection")
         }
     }
 
@@ -54,6 +58,17 @@ class Config: NSObject {
         set(priceOnAppIcon) {
             loadIfNeeded()
             _configData.priceOnAppIcon = priceOnAppIcon
+            syncToDisk()
+        }
+    }
+    static var touchIdProtection: Bool {
+        get {
+        loadIfNeeded()
+        return _configData.touchIdProtection
+        }
+        set(touchIdProtection) {
+            loadIfNeeded()
+            _configData.touchIdProtection = touchIdProtection
             syncToDisk()
         }
     }

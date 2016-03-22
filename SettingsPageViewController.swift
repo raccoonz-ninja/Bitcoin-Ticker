@@ -12,6 +12,7 @@ class SettingsPageViewController: UIViewController, UITableViewDataSource {
 
     private var tableView: UITableView!
     private let priceOnAppIconCellIdentifier = "priceOnAppIconCell"
+    private let tradeTouchIdCellIdentifier = "tradeTouchIdCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class SettingsPageViewController: UIViewController, UITableViewDataSource {
         self.tableView.backgroundColor = UIColor.clearColor()
         self.tableView.separatorColor = UIColor.clearColor()
         self.tableView.registerClass(PriceOnAppIconCell.self, forCellReuseIdentifier: priceOnAppIconCellIdentifier)
+        self.tableView.registerClass(TradeTouchIdCell.self, forCellReuseIdentifier: tradeTouchIdCellIdentifier)
         
         self.view.addSubview(self.tableView)
 
@@ -32,11 +34,14 @@ class SettingsPageViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(priceOnAppIconCellIdentifier) {
+        let row = indexPath.row
+        if row == 0, let cell = tableView.dequeueReusableCellWithIdentifier(priceOnAppIconCellIdentifier) {
+            return cell
+        } else if row == 1, let cell = tableView.dequeueReusableCellWithIdentifier(tradeTouchIdCellIdentifier) {
             return cell
         }
         return UITableViewCell()
