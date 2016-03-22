@@ -10,20 +10,18 @@ import UIKit
 
 class MainPageViewController: UIViewController {
 
-    private var currentPriceLabel: UILabel!
-    private var lastUpdateLabel: LiveLabel!
+    private let currentPriceLabel = UILabel()
+    private let lastUpdateLabel = LiveLabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.currentPriceLabel = UILabel()
         self.currentPriceLabel.text = ""
         self.currentPriceLabel.font = UIConfig.currentPriceFont
         self.currentPriceLabel.textColor = UIConfig.currentPriceColor
         self.currentPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.currentPriceLabel)
         
-        self.lastUpdateLabel = LiveLabel()
         self.lastUpdateLabel.template = ""
         self.lastUpdateLabel.font = UIConfig.lastUpdateFont
         self.lastUpdateLabel.textColor = UIConfig.lastUpdateColor

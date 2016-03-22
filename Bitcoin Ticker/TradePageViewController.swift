@@ -91,9 +91,10 @@ class TradePageViewController: UIViewController {
     }
     
     func onAddButtonTap() {
-        self.presentViewController(TradeFormViewController(), animated: true) {
-            
-        }
+        let vc = TradeFormViewController()
+        vc.modalPresentationStyle = .Custom
+        vc.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(vc, animated: true, completion: nil)
     }
 
 }

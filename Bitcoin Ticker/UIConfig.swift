@@ -49,11 +49,19 @@ class UIConfig: NSObject {
     static let tradeCellDeleteColor = Color.redColor
     static let tradeCellEditColor = Color.primaryColorLight
     
+    static let tradeFormHMargin = CGFloat(50)
+    static let tradeFormTitleVMargin = CGFloat(10)
+    static let tradeFormLabelLeftMargin = CGFloat(20)
+    static let tradeFormTextfieldVMargin = CGFloat(20)
+    static let tradeFormTextfieldRightMargin = CGFloat(20)
     static let tradeFormTextColor = Color.primaryColor
     static let tradeFormTextFieldBorderColor = Color.primaryColor
     static let tradeFormButtonTextColor = Color.primaryColor
     static let tradeFormButtonBorderColor = Color.primaryColor
     static let tradeFormBackground = Color.primaryColorLight
     static let tradeFormDatePickerColor = Color.primaryColorLight
+    static let tradeFormCornerRadius = CGFloat(4)
+    static let tradeFormTextFieldCornerRadius = CGFloat(3)
+    static let tradeFormButtonCornerRadius = CGFloat(3)
 
 }

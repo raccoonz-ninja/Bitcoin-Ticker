@@ -66,7 +66,7 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.view.tag = backgroundViewTag
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onBackgroundTap:"))
         
-        self.contentView.layer.cornerRadius = 4
+        self.contentView.layer.cornerRadius = UIConfig.tradeFormCornerRadius
         self.contentView.backgroundColor = UIConfig.tradeFormBackground
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.userInteractionEnabled = true
@@ -74,7 +74,7 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onBackgroundTap:"))
         self.view.addSubview(self.contentView)
         
-        self.titleLabel.text = "Add a trade"
+        self.titleLabel.text = self.tradeToEdit != nil ? "Update trade" : "Add a trade"
         self.titleLabel.textColor = UIConfig.tradeFormTextColor
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(self.titleLabel)
@@ -88,7 +88,7 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.amountTextfield.borderStyle = .Line
         self.amountTextfield.layer.borderWidth = 1
         self.amountTextfield.layer.borderColor = UIConfig.tradeFormTextFieldBorderColor.CGColor
-        self.amountTextfield.layer.cornerRadius = 3
+        self.amountTextfield.layer.cornerRadius = UIConfig.tradeFormTextFieldCornerRadius
         self.amountTextfield.textAlignment = .Right
         self.amountTextfield.tintColor = UIConfig.tradeFormTextFieldBorderColor
         self.amountTextfield.keyboardType = .DecimalPad
@@ -104,7 +104,7 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.priceTextfield.borderStyle = .Line
         self.priceTextfield.layer.borderWidth = 1
         self.priceTextfield.layer.borderColor = UIConfig.tradeFormTextFieldBorderColor.CGColor
-        self.priceTextfield.layer.cornerRadius = 3
+        self.priceTextfield.layer.cornerRadius = UIConfig.tradeFormTextFieldCornerRadius
         self.priceTextfield.textAlignment = .Right
         self.priceTextfield.tintColor = UIConfig.tradeFormTextFieldBorderColor
         self.priceTextfield.tag = priceTextfieldTag
@@ -138,7 +138,7 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.buyButton.translatesAutoresizingMaskIntoConstraints = false
         self.buyButton.layer.borderWidth = 1
         self.buyButton.layer.borderColor = UIConfig.tradeFormButtonBorderColor.CGColor
-        self.buyButton.layer.cornerRadius = 3
+        self.buyButton.layer.cornerRadius = UIConfig.tradeFormButtonCornerRadius
         self.buyButton.setTitleColor(UIConfig.tradeFormButtonTextColor, forState: .Normal)
         self.buyButton.addTarget(self, action: "onBuyTap", forControlEvents: .TouchUpInside)
         self.buyButton.enabled = true
@@ -148,41 +148,41 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.sellButton.translatesAutoresizingMaskIntoConstraints = false
         self.sellButton.layer.borderWidth = 1
         self.sellButton.layer.borderColor = UIConfig.tradeFormButtonBorderColor.CGColor
-        self.sellButton.layer.cornerRadius = 3
+        self.sellButton.layer.cornerRadius = UIConfig.tradeFormButtonCornerRadius
         self.sellButton.setTitleColor(UIConfig.tradeFormButtonTextColor, forState: .Normal)
         self.sellButton.addTarget(self, action: "onSellTap", forControlEvents: .TouchUpInside)
         self.sellButton.enabled = true
         self.contentView.addSubview(self.sellButton)
         
         
-        self.view.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: -50))
-        self.view.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 50))
+        self.view.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: -UIConfig.tradeFormHMargin))
+        self.view.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: UIConfig.tradeFormHMargin))
         self.contentViewVConstraint_noKeyboard = NSLayoutConstraint(item: self.contentView, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: 0)
         self.contentViewVConstraint_withKeyboard = NSLayoutConstraint(item: self.contentView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 0.5, constant: 0)
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .Top, relatedBy: .Equal, toItem: self.contentView, attribute: .Top, multiplier: 1, constant: 10))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: 10))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .Top, relatedBy: .Equal, toItem: self.contentView, attribute: .Top, multiplier: 1, constant: UIConfig.tradeFormTitleVMargin))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self.contentView, attribute: .CenterX, multiplier: 1, constant: 0))
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.amountLabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: 10))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.amountLabel, attribute: .Top, relatedBy: .Equal, toItem: self.titleLabel, attribute: .Bottom, multiplier: 1, constant: 20))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.amountLabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: UIConfig.tradeFormLabelLeftMargin))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.amountLabel, attribute: .Top, relatedBy: .Equal, toItem: self.titleLabel, attribute: .Bottom, multiplier: 1, constant: UIConfig.tradeFormTitleVMargin + UIConfig.tradeFormTextfieldVMargin))
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.amountTextfield, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -10))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.amountTextfield, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -UIConfig.tradeFormTextfieldRightMargin))
         self.contentView.addConstraint(NSLayoutConstraint(item: self.amountTextfield, attribute: .CenterY, relatedBy: .Equal, toItem: self.amountLabel, attribute: .CenterY, multiplier: 1, constant: 0))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.amountTextfield, attribute: .Width, relatedBy: .Equal, toItem: self.contentView, attribute: .Width, multiplier: 1, constant: -100))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.amountTextfield, attribute: .Width, relatedBy: .Equal, toItem: self.contentView, attribute: .Width, multiplier: 1, constant: -125))
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.priceLabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: 10))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.priceLabel, attribute: .Top, relatedBy: .Equal, toItem: self.amountLabel, attribute: .Bottom, multiplier: 1, constant: 10))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.priceLabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: UIConfig.tradeFormLabelLeftMargin))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.priceLabel, attribute: .Top, relatedBy: .Equal, toItem: self.amountLabel, attribute: .Bottom, multiplier: 1, constant: UIConfig.tradeFormTextfieldVMargin))
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.priceTextfield, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -10))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.priceTextfield, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -UIConfig.tradeFormTextfieldRightMargin))
         self.contentView.addConstraint(NSLayoutConstraint(item: self.priceTextfield, attribute: .CenterY, relatedBy: .Equal, toItem: self.priceLabel, attribute: .CenterY, multiplier: 1, constant: 0))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.priceTextfield, attribute: .Width, relatedBy: .Equal, toItem: self.contentView, attribute: .Width, multiplier: 1, constant: -100))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.priceTextfield, attribute: .Width, relatedBy: .Equal, toItem: self.contentView, attribute: .Width, multiplier: 1, constant: -125))
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.datelabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: 10))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.datelabel, attribute: .Top, relatedBy: .Equal, toItem: self.priceLabel, attribute: .Bottom, multiplier: 1, constant: 10))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.datelabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: UIConfig.tradeFormLabelLeftMargin))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.datelabel, attribute: .Top, relatedBy: .Equal, toItem: self.priceLabel, attribute: .Bottom, multiplier: 1, constant: UIConfig.tradeFormTextfieldVMargin))
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.dateTextfield, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -10))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.dateTextfield, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -UIConfig.tradeFormTextfieldRightMargin))
         self.contentView.addConstraint(NSLayoutConstraint(item: self.dateTextfield, attribute: .CenterY, relatedBy: .Equal, toItem: self.datelabel, attribute: .CenterY, multiplier: 1, constant: 0))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.dateTextfield, attribute: .Width, relatedBy: .Equal, toItem: self.contentView, attribute: .Width, multiplier: 1, constant: -100))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.dateTextfield, attribute: .Width, relatedBy: .Equal, toItem: self.contentView, attribute: .Width, multiplier: 1, constant: -125))
         
         self.contentView.addConstraint(NSLayoutConstraint(item: self.buyButton, attribute: .Top, relatedBy: .Equal, toItem: self.datelabel, attribute: .Bottom, multiplier: 1, constant: 20))
         self.contentView.addConstraint(NSLayoutConstraint(item: self.buyButton, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .CenterX, multiplier: 1, constant: -10))

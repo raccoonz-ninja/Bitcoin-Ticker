@@ -10,8 +10,8 @@ import UIKit
 
 class RootViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
 
-    private var scrollView: AllowSwipeInTableCellScrollView!
-    private var pageControl: UIPageControl!
+    private let scrollView = AllowSwipeInTableCellScrollView()
+    private var pageControl = UIPageControl()
     private var controllers: [UIViewController]!
     
     private let initialPageIndex = 1
@@ -32,7 +32,6 @@ class RootViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         self.setCurrentPage(initialPageIndex)
         
         // Create the UIScrollView
-        self.scrollView = AllowSwipeInTableCellScrollView()
         self.scrollView.delegate = self
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.pagingEnabled = true
@@ -41,7 +40,6 @@ class RootViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         self.view.addSubview(self.scrollView)
         
         // Create the UIPageControl
-        self.pageControl = UIPageControl()
         self.pageControl.translatesAutoresizingMaskIntoConstraints = false
         self.pageControl.numberOfPages = pageCount
         self.pageControl.currentPageIndicatorTintColor = UIConfig.switchColor

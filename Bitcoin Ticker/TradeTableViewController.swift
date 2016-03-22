@@ -94,10 +94,14 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func handleEdit(action: UITableViewRowAction, forRowAtIndexPath indexPath: NSIndexPath) {
         let tradeForm = TradeFormViewController()
+        tradeForm.modalPresentationStyle = .Custom
+        tradeForm.modalTransitionStyle = .CrossDissolve
         tradeForm.setTradeToEdit(TradeList.trades[indexPath.row])
         if let vc = self.tradePageViewController {
             vc.presentViewController(tradeForm, animated: true, completion: nil)
         }
+//        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
+        self.tableView.setEditing(false, animated: true)
     }
 
 }

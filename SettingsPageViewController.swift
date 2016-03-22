@@ -10,14 +10,13 @@ import UIKit
 
 class SettingsPageViewController: UIViewController, UITableViewDataSource {
 
-    private var tableView: UITableView!
+    private let tableView = UITableView(frame: CGRectZero, style: .Grouped)
     private let priceOnAppIconCellIdentifier = "priceOnAppIconCell"
     private let tradeTouchIdCellIdentifier = "tradeTouchIdCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView = UITableView(frame: CGRectZero, style: .Grouped)
         self.tableView.dataSource = self
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.backgroundColor = UIColor.clearColor()
