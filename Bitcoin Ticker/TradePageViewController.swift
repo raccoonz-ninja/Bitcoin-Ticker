@@ -27,8 +27,6 @@ class TradePageViewController: UIViewController {
         self.addButton.text = "  +  "
         self.addButton.textColor = UIConfig.tradeAddButtonColor
         self.addButton.font = UIConfig.tradeAddButtonFontSize
-        self.addButton.layer.borderColor = Color.primaryColorLight.CGColor
-        self.addButton.layer.borderWidth = 1
         self.addButton.userInteractionEnabled = true
         self.addButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onAddButtonTap"))
         self.addButton.translatesAutoresizingMaskIntoConstraints = false
@@ -38,13 +36,13 @@ class TradePageViewController: UIViewController {
         self.lockScreen.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.lockScreen)
         
-        self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 50))
+        self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: UIConfig.tradeTableVOffset))
         self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 0))
         
-        self.view.addConstraint(NSLayoutConstraint(item: self.addButton, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: -UIConfig.tradeCellHPadding))
-        self.view.addConstraint(NSLayoutConstraint(item: self.addButton, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: UIConfig.tradeCellHPadding))
+        self.view.addConstraint(NSLayoutConstraint(item: self.addButton, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: -7))
+        self.view.addConstraint(NSLayoutConstraint(item: self.addButton, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 25))
         
         self.view.addConstraint(NSLayoutConstraint(item: self.lockScreen, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: self.lockScreen, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: 0))

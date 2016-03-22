@@ -10,6 +10,7 @@
 		2D27B86F1CA0E2840050F95F /* TradeTouchIdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27B86E1CA0E2840050F95F /* TradeTouchIdCell.swift */; };
 		2D27B8711CA0E9BF0050F95F /* LiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27B8701CA0E9BF0050F95F /* LiveLabel.swift */; };
 		2D27B8731CA0E9DE0050F95F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27B8721CA0E9DE0050F95F /* NSDateExtension.swift */; };
+		2D4904361CA1F391006924A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4904351CA1F391006924A7 /* LaunchScreen.storyboard */; };
 		2D4D23961C95CE9000D98ACF /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D23951C95CE9000D98ACF /* NSDateExtension.swift */; };
 		2D4D23981C95D0C700D98ACF /* NSDecimalNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D23971C95D0C700D98ACF /* NSDecimalNumberExtension.swift */; };
 		2D5B55C11C99D001002E6EB1 /* TradeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B55C01C99D001002E6EB1 /* TradeList.swift */; };
@@ -31,7 +32,6 @@
 		2DD65B621C9241230066DD33 /* Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD65B611C9241230066DD33 /* Trade.swift */; };
 		2DD65B641C9246600066DD33 /* TradeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD65B631C9246600066DD33 /* TradeTableViewController.swift */; };
 		2DE865731C8E7E6700B28FA4 /* PriceOnAppIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE865721C8E7E6700B28FA4 /* PriceOnAppIconCell.swift */; };
-		2DE8657A1C8E8B2C00B28FA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE865791C8E8B2C00B28FA4 /* LaunchScreen.storyboard */; };
 		2DEA51B41C9256E20076A39A /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA51B31C9256E20076A39A /* TradeTableViewCell.swift */; };
 		2DEB014C1C9E1DFB003D6DF8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEB014B1C9E1DFB003D6DF8 /* NotificationCenter.framework */; };
 		2DEB014F1C9E1DFB003D6DF8 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB014E1C9E1DFB003D6DF8 /* TodayViewController.swift */; };
@@ -42,7 +42,6 @@
 		2DEB01611C9E2474003D6DF8 /* LiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB01601C9E2474003D6DF8 /* LiveLabel.swift */; };
 		2DEB01631C9E2ABC003D6DF8 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEB01621C9E2ABC003D6DF8 /* LocalAuthentication.framework */; };
 		2DFF60C41C9648FD00A1A2B4 /* TradeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF60C31C9648FD00A1A2B4 /* TradeFormViewController.swift */; };
-		3B70E41D41E76BB060149C13 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560AF3D318BE42C55066C745 /* Pods.framework */; };
 		6650EC688FDA241CCD0141BA /* Pods_Bitcoin_Price.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91022FCDA78567F93399DEEB /* Pods_Bitcoin_Price.framework */; };
 		8FE0A713EAD204CEA1EB0912 /* Pods_Bitcoin_Ticker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82795405463FFCCF7AF8FCBB /* Pods_Bitcoin_Ticker.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +74,7 @@
 		2D27B86E1CA0E2840050F95F /* TradeTouchIdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeTouchIdCell.swift; sourceTree = "<group>"; };
 		2D27B8701CA0E9BF0050F95F /* LiveLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveLabel.swift; sourceTree = "<group>"; };
 		2D27B8721CA0E9DE0050F95F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		2D4904351CA1F391006924A7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D4D23951C95CE9000D98ACF /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		2D4D23971C95D0C700D98ACF /* NSDecimalNumberExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberExtension.swift; sourceTree = "<group>"; };
 		2D5B55C01C99D001002E6EB1 /* TradeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeList.swift; sourceTree = "<group>"; };
@@ -98,7 +98,6 @@
 		2DD65B611C9241230066DD33 /* Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trade.swift; sourceTree = "<group>"; };
 		2DD65B631C9246600066DD33 /* TradeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeTableViewController.swift; sourceTree = "<group>"; };
 		2DE865721C8E7E6700B28FA4 /* PriceOnAppIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceOnAppIconCell.swift; sourceTree = "<group>"; };
-		2DE865791C8E8B2C00B28FA4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DEA51B31C9256E20076A39A /* TradeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
 		2DEB014A1C9E1DFB003D6DF8 /* Bitcoin Price.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Bitcoin Price.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DEB014B1C9E1DFB003D6DF8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -127,7 +126,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DEB01631C9E2ABC003D6DF8 /* LocalAuthentication.framework in Frameworks */,
-				3B70E41D41E76BB060149C13 /* Pods.framework in Frameworks */,
 				8FE0A713EAD204CEA1EB0912 /* Pods_Bitcoin_Ticker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,7 +185,6 @@
 				2D6CAADC1C85510B00B76138 /* AppDelegate.swift */,
 				2D6CAAE31C85510B00B76138 /* Assets.xcassets */,
 				2D6CAAE81C85510B00B76138 /* Info.plist */,
-				2DE865791C8E8B2C00B28FA4 /* LaunchScreen.storyboard */,
 			);
 			path = "Bitcoin Ticker";
 			sourceTree = "<group>";
@@ -283,6 +280,7 @@
 				2D27B8721CA0E9DE0050F95F /* NSDateExtension.swift */,
 				2D27B8701CA0E9BF0050F95F /* LiveLabel.swift */,
 				2DEB01501C9E1DFB003D6DF8 /* MainInterface.storyboard */,
+				2D4904351CA1F391006924A7 /* LaunchScreen.storyboard */,
 				2DEB01531C9E1DFB003D6DF8 /* Info.plist */,
 			);
 			path = "Bitcoin Price";
@@ -405,7 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D6CAAE41C85510B00B76138 /* Assets.xcassets in Resources */,
-				2DE8657A1C8E8B2C00B28FA4 /* LaunchScreen.storyboard in Resources */,
+				2D4904361CA1F391006924A7 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

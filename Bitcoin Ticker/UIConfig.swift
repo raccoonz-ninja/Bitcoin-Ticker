@@ -34,9 +34,12 @@ class UIConfig: NSObject {
     // ----------
     static let lockScreenFadeOutDuration = 0.6
     
+    static let tradeTableVOffset = CGFloat(80)
     static let tradeAddButtonColor = Color.primaryColorLight
     static let tradeAddButtonFontSize = UIFont.systemFontOfSize(30, weight: UIFontWeightThin)
-
+    static let tradePlaceholderFont = UIFont.systemFontOfSize(16, weight: UIFontWeightRegular)
+    static let tradePlaceholderColor = Color.primaryColorLight
+    
     static let tradeCellVPadding = CGFloat(10)
     static let tradeCellHPadding = CGFloat(20)
     static let tradeCellFont = UIFont.systemFontOfSize(16, weight: UIFontWeightRegular)

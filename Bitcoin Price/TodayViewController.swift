@@ -34,7 +34,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             if let price = notification.object as? NSDecimalNumber {
                 self.bitcoinPrice.text = price.usdValue
                 self.lastUpdateLabel.date = NSDate()
-                self.lastUpdateLabel.template = "Updated %TIME%"
+                self.lastUpdateLabel.template = "Updated %time%"
             }
         }
     }

@@ -46,7 +46,7 @@ class LiveLabel: UILabel {
     }
     
     convenience init() {
-        self.init(template: "%TIME%", date: NSDate(timeIntervalSinceNow: 0))
+        self.init(template: "%Time%", date: NSDate(timeIntervalSinceNow: 0))
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -55,8 +55,13 @@ class LiveLabel: UILabel {
     
     func updateText() {
         let fromNow = self._date.fromNow()
-        let newText = self._template.stringByReplacingOccurrencesOfString("%TIME%", withString: fromNow)
-        self.text = newText.lowercaseString
+        let fromNowLowercase = fromNow.lowercaseString
+        let fromNowCapitalize = fromNowLowercase.capitalizedString
+        let fromNowUppercase = fromNow.uppercaseString
+        var newText = self._template.stringByReplacingOccurrencesOfString("%TIME%", withString: fromNowUppercase)
+        newText = newText.stringByReplacingOccurrencesOfString("%time%", withString: fromNowLowercase)
+        newText = newText.stringByReplacingOccurrencesOfString("%Time%", withString: fromNowCapitalize)
+        self.text = newText
     }
     
 }

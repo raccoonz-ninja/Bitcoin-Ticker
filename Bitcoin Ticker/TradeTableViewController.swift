@@ -10,7 +10,8 @@ import UIKit
 
 class TradeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    private var tableView: UITableView!
+    private let tableView = UITableView(frame: CGRectZero, style: .Plain)
+    private let placeholder = UILabel()
     private let tradeCellIdentifier = "tradeCellIdentifier"
     private var preventNextReload = false
     
@@ -19,7 +20,6 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView = UITableView(frame: CGRectZero, style: .Plain)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -28,13 +28,21 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.registerClass(TradeTableViewCell.self, forCellReuseIdentifier: tradeCellIdentifier)
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 85
-        
         self.view.addSubview(self.tableView)
+        
+        self.placeholder.text = "You don't have any trade yet."
+        self.placeholder.font = UIConfig.tradePlaceholderFont
+        self.placeholder.textColor = UIConfig.tradePlaceholderColor
+        self.placeholder.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.placeholder)
         
         self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0))
+        
+        self.view.addConstraint(NSLayoutConstraint(item: self.placeholder, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(item: self.placeholder, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: -UIConfig.tradeTableVOffset / 2))
         
         Dispatcher.on(Dispatcher.Event.TradesUpdated) {
             self.reloadTable()
@@ -50,7 +58,9 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TradeList.trades.count
+        let count = TradeList.trades.count
+        self.placeholder.hidden = count > 0
+        return count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
