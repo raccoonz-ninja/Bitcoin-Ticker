@@ -6,6 +6,7 @@ var options = {passphrase: 'sdl70@sv926'}
 var apnConnection = new apn.Connection(options)
 
 var lastPrice = null
+var overridenPrice = null
 var onNewPrice = function(newPrice) {
   roundedPrice = Math.floor(newPrice)
   if (!lastPrice || lastPrice !== roundedPrice) {
@@ -14,12 +15,16 @@ var onNewPrice = function(newPrice) {
   }
 }
 
+var getPrice = function() {
+  return overridenPrice || lastPrice
+}
+
 var notifyAll = function() {
   db.find({}, function(err, doc) {
     if (err) {
       console.log('[' + new Date() + '] ' + err)
     } else {
-      console.log('[' + new Date() + '] Sending push notification to ' + doc.length + ' devices ($' + lastPrice + ').')
+      console.log('[' + new Date() + '] Sending push notification to ' + doc.length + ' devices ($' + getPrice() + ').')
       doc.forEach(function (user) {
         notifyToken(user.deviceToken)
       })
@@ -28,7 +33,7 @@ var notifyAll = function() {
 }
 
 var notifyToken = function(deviceToken) {
-  setBadge(deviceToken, lastPrice)
+  setBadge(deviceToken, getPrice())
 }
 var clearToken = function(deviceToken) {
   setBadge(deviceToken, 0)
@@ -60,8 +65,22 @@ var checkPrice = function(next) {
   setTimeout(checkPrice.bind(null, next), next)
 }
 
+overridePriceInterval = null
+var overridePrice = function(price, duration) {
+  overridenPrice = price
+  notifyAll()
+  if (overridePriceInterval) {
+    clearInterval(overridePriceInterval)
+  }
+  overridePriceInterval = setTimeout(function () {
+    overridenPrice = null
+    notifyAll()
+  }, duration * 1000)
+}
+
 module.exports = {
   checkPrice: checkPrice,
   notifyToken: notifyToken,
-  clearToken: clearToken
+  clearToken: clearToken,
+  overridePrice: overridePrice
 }

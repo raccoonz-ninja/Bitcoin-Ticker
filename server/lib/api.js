@@ -1,7 +1,5 @@
 var db = require('./database')
 var PriceWatcher = require('./price-watcher')
-var notifyToken = PriceWatcher.notifyToken
-var clearToken = PriceWatcher.clearToken
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
@@ -37,7 +35,7 @@ app.post('/subscribe', function(req, res) {
         console.error('[' + new Date() + '] ' + err)
         return res.send({error: 'Unexpected error'})
       }
-      notifyToken(deviceToken)
+      PriceWatcher.notifyToken(deviceToken)
       return res.send({result: 'ok'})
     }
   )
@@ -59,10 +57,28 @@ app.post('/unsubscribe', function(req, res) {
         console.error('[' + new Date() + '] ' + err)
         return res.send({error: 'Unexpected error'})
       }
-      clearToken(deviceToken)
+      PriceWatcher.clearToken(deviceToken)
       return res.send({result: 'ok'})
     }
   )
+})
+
+app.post('/fakePrice', function(req, res) {
+  params = req.body
+  try {
+    newPrice = parseFloat(params.price)
+    duration = Math.min(Math.max(parseFloat(params.duration), 0), 300)
+    pass = params.pass
+    if (!isNaN(newPrice) && !isNaN(duration) && pass == 'sdl70@sv926potato') {
+      PriceWatcher.overridePrice(newPrice, duration)
+      return res.send({result: 'ok'})
+    } else {
+      return res.send({result: 'invalid parameters'})
+    }
+  } catch (err) {
+    console.error('[' + new Date() + '] ' + err)
+    return res.send({result: 'Unexpected error'})
+  }
 })
 
 module.exports = {
