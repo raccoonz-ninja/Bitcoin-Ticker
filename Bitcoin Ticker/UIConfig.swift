@@ -122,6 +122,7 @@ class LightUI: UIConfig {
         
         self.tradeFormBackground = Color.lightGray
         self.tradeFormBorderColor = Color.primaryColor
+        self.tradeFormDatePickerColor = Color.mediumGray
     }
 
 }

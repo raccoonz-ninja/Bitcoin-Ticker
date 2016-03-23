@@ -215,8 +215,7 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.priceTextfield.tintColor = UI.current.tradeFormTextFieldBorderColor
         self.datelabel.textColor = UI.current.tradeFormTextColor
         self.dateTextfield.layer.borderColor = UI.current.tradeFormTextFieldBorderColor.CGColor
-        self.dateDatePicker.tintColor = UI.current.tradeFormDatePickerColor
-        self.dateDatePicker.setValue(UI.current.tradeFormDatePickerColor, forKey: "textColor")
+        self.dateDatePicker.setValue(UI.current.tradeFormDatePickerColor, forKey: "textColor") // Not working :(
         self.buyButton.layer.borderColor = UI.current.tradeFormButtonBorderColor.CGColor
         self.buyButton.layer.cornerRadius = UI.current.tradeFormButtonCornerRadius
         self.buyButton.setTitleColor(UI.current.tradeFormButtonTextColor, forState: .Normal)
