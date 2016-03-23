@@ -15,20 +15,32 @@ import Crashlytics
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var application: UIApplication?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        self.application = application
         Fabric.with([Crashlytics.self])
-        application.setStatusBarStyle(.LightContent, animated: false)
         self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
+        self.updateStyle()
+        Dispatcher.on(Dispatcher.Event.StyleUpdated) {
+            self.updateStyle()
+        }
         if let window = self.window {
-            window.backgroundColor = UIConfig.appBackgroundColor
             window.rootViewController = RootViewController()
             window.makeKeyAndVisible()
         }
-        
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
         BitcoinPriceService.start()
         return true
+    }
+    
+    func updateStyle() {
+        if let application = self.application {
+            application.setStatusBarStyle(UI.current.statusBarStyle, animated: false)
+        }
+        if let window = self.window {
+            window.backgroundColor = UI.current.appBackgroundColor
+        }
     }
 
     // Callback from the system to get the push notification device token

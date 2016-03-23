@@ -23,42 +23,50 @@ class TradeTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIConfig.appBackgroundColor
         self.selectionStyle = .None
         
-        self.titleLabel.textColor = UIConfig.tradeCellColor
-        self.titleLabel.font = UIConfig.tradeCellFont
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(self.titleLabel)
         
-        self.timeLabel.textColor = UIConfig.tradeCellSubtitleColor
         self.timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.timeLabel.font = UIConfig.tradeCellSmallFont
         self.contentView.addSubview(self.timeLabel)
         
-        self.btcAmountLabel.textColor = UIConfig.tradeCellColor
-        self.btcAmountLabel.font = UIConfig.tradeCellFont
         self.btcAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(self.btcAmountLabel)
         
-        self.usdAmountLabel.textColor = UIConfig.tradeCellSubtitleColor
         self.usdAmountLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.usdAmountLabel.font = UIConfig.tradeCellSmallFont
         self.contentView.addSubview(self.usdAmountLabel)
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: UIConfig.tradeCellHPadding))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .Top, relatedBy: .Equal, toItem: self.contentView, attribute: .Top, multiplier: 1, constant: UIConfig.tradeCellVPadding))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: UI.current.tradeCellHPadding))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .Top, relatedBy: .Equal, toItem: self.contentView, attribute: .Top, multiplier: 1, constant: UI.current.tradeCellVPadding))
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.btcAmountLabel, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -UIConfig.tradeCellHPadding))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.btcAmountLabel, attribute: .Top, relatedBy: .Equal, toItem: self.contentView, attribute: .Top, multiplier: 1, constant: UIConfig.tradeCellVPadding))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.btcAmountLabel, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -UI.current.tradeCellHPadding))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.btcAmountLabel, attribute: .Top, relatedBy: .Equal, toItem: self.contentView, attribute: .Top, multiplier: 1, constant: UI.current.tradeCellVPadding))
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.timeLabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: UIConfig.tradeCellHPadding))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.timeLabel, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: UI.current.tradeCellHPadding))
         self.contentView.addConstraint(NSLayoutConstraint(item: self.timeLabel, attribute: .Top, relatedBy: .Equal, toItem: self.titleLabel, attribute: .Bottom, multiplier: 1, constant: 0))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.timeLabel, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self.contentView, attribute: .Bottom, multiplier: 1, constant: -UIConfig.tradeCellVPadding))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.timeLabel, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self.contentView, attribute: .Bottom, multiplier: 1, constant: -UI.current.tradeCellVPadding))
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.usdAmountLabel, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -UIConfig.tradeCellHPadding))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.usdAmountLabel, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -UI.current.tradeCellHPadding))
         self.contentView.addConstraint(NSLayoutConstraint(item: self.usdAmountLabel, attribute: .Top, relatedBy: .Equal, toItem: self.btcAmountLabel, attribute: .Bottom, multiplier: 1, constant: 0))
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.usdAmountLabel, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self.contentView, attribute: .Bottom, multiplier: 1, constant: -UIConfig.tradeCellVPadding))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.usdAmountLabel, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self.contentView, attribute: .Bottom, multiplier: 1, constant: -UI.current.tradeCellVPadding))
+        
+        self.updateStyle()
+        Dispatcher.on(Dispatcher.Event.StyleUpdated) {
+            self.updateStyle()
+        }
+    }
+    
+    func updateStyle() {
+        self.backgroundColor = UI.current.appBackgroundColor
+        self.titleLabel.textColor = UI.current.tradeCellColor
+        self.titleLabel.font = UI.current.tradeCellFont
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.timeLabel.textColor = UI.current.tradeCellSubtitleColor
+        self.timeLabel.font = UI.current.tradeCellSmallFont
+        self.btcAmountLabel.textColor = UI.current.tradeCellColor
+        self.btcAmountLabel.font = UI.current.tradeCellFont
+        self.usdAmountLabel.textColor = UI.current.tradeCellSubtitleColor
+        self.usdAmountLabel.font = UI.current.tradeCellSmallFont
     }
     
     func setTrade(trade: Trade) {

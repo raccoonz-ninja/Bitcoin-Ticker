@@ -1,14 +1,14 @@
 //
-//  TradeTouchIdCell.swift
+//  UIStyleCell.swift
 //  Bitcoin Ticker
 //
-//  Created by Matthis Perrin on 3/21/16.
+//  Created by Matthis Perrin on 3/22/16.
 //  Copyright © 2016 Raccoonz Ninja. All rights reserved.
 //
 
 import UIKit
 
-class TradeTouchIdCell: UITableViewCell {
+class UIStyleCell: UITableViewCell {
     
     private let switchView = UISwitch()
     
@@ -20,9 +20,9 @@ class TradeTouchIdCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .None
         
-        self.textLabel?.text = "Touch ID protection"
+        self.textLabel?.text = "Light style"
         
-        self.switchView.on = Config.touchIdProtection
+        self.switchView.on = Config.uiType == UIConfigType.Light
         self.switchView.addTarget(self, action: "onSwitchChange:", forControlEvents: .ValueChanged)
         self.accessoryView = switchView
         
@@ -40,8 +40,8 @@ class TradeTouchIdCell: UITableViewCell {
     }
     
     func onSwitchChange(sender: AnyObject) {
-        Config.touchIdProtection = !Config.touchIdProtection
-        TradePageViewController.locked = Config.touchIdProtection
+        Config.uiType = self.switchView.on ? UIConfigType.Light : UIConfigType.Dark
+        Dispatcher.trigger(Dispatcher.Event.StyleUpdated, payload: nil)
     }
 
 }

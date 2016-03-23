@@ -31,8 +31,6 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
         self.view.addSubview(self.tableView)
         
         self.placeholder.text = "You don't have any trade yet."
-        self.placeholder.font = UIConfig.tradePlaceholderFont
-        self.placeholder.textColor = UIConfig.tradePlaceholderColor
         self.placeholder.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.placeholder)
         
@@ -42,11 +40,20 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
         self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0))
         
         self.view.addConstraint(NSLayoutConstraint(item: self.placeholder, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0))
-        self.view.addConstraint(NSLayoutConstraint(item: self.placeholder, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: -UIConfig.tradeTableVOffset / 2))
+        self.view.addConstraint(NSLayoutConstraint(item: self.placeholder, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: -UI.current.tradeTableVOffset / 2))
         
         Dispatcher.on(Dispatcher.Event.TradesUpdated) {
             self.reloadTable()
         }
+        self.updateStyle()
+        Dispatcher.on(Dispatcher.Event.StyleUpdated) {
+            self.updateStyle()
+        }
+    }
+    
+    func updateStyle() {
+        self.placeholder.font = UI.current.tradePlaceholderFont
+        self.placeholder.textColor = UI.current.tradePlaceholderColor
     }
     
     func reloadTable() {
@@ -78,10 +85,10 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .Normal, title: "Delete", handler: self.handleDelete)
-        deleteAction.backgroundColor = UIConfig.tradeCellDeleteColor
+        deleteAction.backgroundColor = UI.current.tradeCellDeleteColor
         
         let editAction = UITableViewRowAction(style: .Normal, title: "Edit", handler: self.handleEdit)
-        editAction.backgroundColor = UIConfig.tradeCellEditColor
+        editAction.backgroundColor = UI.current.tradeCellEditColor
         
         return [deleteAction, editAction]
     }
@@ -100,7 +107,6 @@ class TradeTableViewController: UIViewController, UITableViewDataSource, UITable
         if let vc = self.tradePageViewController {
             vc.presentViewController(tradeForm, animated: true, completion: nil)
         }
-//        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
         self.tableView.setEditing(false, animated: true)
     }
 

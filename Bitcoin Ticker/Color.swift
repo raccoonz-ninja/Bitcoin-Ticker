@@ -15,4 +15,7 @@ class Color: NSObject {
     static let primaryColorMediumLight = UIColor(red: 0.435, green: 0.467, blue: 0.471, alpha: 1) // #6F7778
     static let redColor = UIColor(red: 0.7, green: 0.25, blue: 0.26, alpha: 1) // #642022
     
+    static let lightGray = UIColor(white: 0.9, alpha: 1)
+    static let mediumGray = UIColor(white: 0.7, alpha: 1)
+    
 }

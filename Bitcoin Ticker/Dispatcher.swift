@@ -20,6 +20,7 @@ class Dispatcher: NSObject {
         case DeviceTokenFailure = "DeviceTokenFailure"
         case NewPriceFetched = "NewPriceFetched"
         case TradesUpdated = "TradesUpdated"
+        case StyleUpdated = "StyleUpdated"
     }
     
     // Trigger an event with a payload

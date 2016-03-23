@@ -42,7 +42,6 @@ class RootViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         // Create the UIPageControl
         self.pageControl.translatesAutoresizingMaskIntoConstraints = false
         self.pageControl.numberOfPages = pageCount
-        self.pageControl.currentPageIndicatorTintColor = UIConfig.switchColor
         self.view.addSubview(self.pageControl)
         
         // Layout the UIScrollView
@@ -61,6 +60,16 @@ class RootViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         for controller in self.controllers {
             self.scrollView.addSubview(controller.view)
         }
+        
+        // Register to style change
+        self.updateStyle()
+        Dispatcher.on(Dispatcher.Event.StyleUpdated) {
+            self.updateStyle()
+        }
+    }
+    
+    func updateStyle() {
+        self.pageControl.currentPageIndicatorTintColor = UI.current.switchColor
     }
     
     // Layout the subviews inside the UIScrollView

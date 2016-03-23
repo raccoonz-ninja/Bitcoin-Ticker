@@ -25,18 +25,15 @@ class TradePageViewController: UIViewController {
         self.view.addSubview(view)
         
         self.addButton.text = "  +  "
-        self.addButton.textColor = UIConfig.tradeAddButtonColor
-        self.addButton.font = UIConfig.tradeAddButtonFontSize
         self.addButton.userInteractionEnabled = true
         self.addButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onAddButtonTap"))
         self.addButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.addButton)
         
-        self.lockScreen.backgroundColor = UIConfig.appBackgroundColor
         self.lockScreen.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.lockScreen)
         
-        self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: UIConfig.tradeTableVOffset))
+        self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: UI.current.tradeTableVOffset))
         self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 0))
@@ -51,6 +48,17 @@ class TradePageViewController: UIViewController {
         
         self.view.bringSubviewToFront(self.lockScreen)
         self.setLocked(TradePageViewController.locked)
+        
+        self.updateStyle()
+        Dispatcher.on(Dispatcher.Event.StyleUpdated) {
+            self.updateStyle()
+        }
+    }
+    
+    func updateStyle() {
+        self.addButton.textColor = UI.current.tradeAddButtonColor
+        self.addButton.font = UI.current.tradeAddButtonFontSize
+        self.lockScreen.backgroundColor = UI.current.appBackgroundColor
     }
     
     func isShown() {
@@ -76,7 +84,7 @@ class TradePageViewController: UIViewController {
             if TradePageViewController.locked {
                 self.lockScreen.layer.opacity = 1
             } else {
-                UIView.animateWithDuration(UIConfig.lockScreenFadeOutDuration, animations: { () -> Void in
+                UIView.animateWithDuration(UI.current.lockScreenFadeOutDuration, animations: { () -> Void in
                     self.lockScreen.layer.opacity = 0
                 })
             }

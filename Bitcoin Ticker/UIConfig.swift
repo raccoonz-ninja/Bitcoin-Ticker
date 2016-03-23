@@ -8,60 +8,120 @@
 
 import UIKit
 
+class UI: NSObject {
+    static var current: UIConfig {
+        get {
+            let configType = Config.uiType
+            if configType == UIConfigType.Dark {
+                return DarkUI()
+            } else if configType == UIConfigType.Light {
+                return LightUI()
+            } else {
+                return UIConfig()
+            }
+        }
+    }
+}
+
 class UIConfig: NSObject {
 
     // Global
     // ------
-    static let appBackgroundColor = Color.primaryColor
-    static let appTextColor = Color.primaryColorLight
-    static let pageControlColor = Color.primaryColorLight
+    var statusBarStyle = UIStatusBarStyle.LightContent
+    var appBackgroundColor = Color.primaryColor
+    var appTextColor = Color.primaryColorLight
+    var pageControlColor = Color.primaryColorLight
     
     
     // Settings Page
     // -------------
-    static let switchColor = Color.primaryColorLight
+    var switchColor = Color.primaryColorLight
     
     
     // Main Page
     // ---------
-    static let currentPriceFont = UIFont.systemFontOfSize(60, weight: UIFontWeightUltraLight)
-    static let currentPriceColor = Color.primaryColorLight
-    static let lastUpdateFont = UIFont.systemFontOfSize(15, weight: UIFontWeightRegular)
-    static let lastUpdateColor = Color.primaryColorMediumLight
+    var currentPriceFont = UIFont.systemFontOfSize(60, weight: UIFontWeightUltraLight)
+    var currentPriceColor = Color.primaryColorLight
+    var lastUpdateFont = UIFont.systemFontOfSize(15, weight: UIFontWeightRegular)
+    var lastUpdateColor = Color.primaryColorMediumLight
     
     
     // Trade Page
     // ----------
-    static let lockScreenFadeOutDuration = 0.6
+    var lockScreenFadeOutDuration = 0.6
     
-    static let tradeTableVOffset = CGFloat(80)
-    static let tradeAddButtonColor = Color.primaryColorLight
-    static let tradeAddButtonFontSize = UIFont.systemFontOfSize(30, weight: UIFontWeightThin)
-    static let tradePlaceholderFont = UIFont.systemFontOfSize(16, weight: UIFontWeightRegular)
-    static let tradePlaceholderColor = Color.primaryColorLight
+    var tradeTableVOffset = CGFloat(80)
+    var tradeAddButtonColor = Color.primaryColorLight
+    var tradeAddButtonFontSize = UIFont.systemFontOfSize(30, weight: UIFontWeightThin)
+    var tradePlaceholderFont = UIFont.systemFontOfSize(16, weight: UIFontWeightRegular)
+    var tradePlaceholderColor = Color.primaryColorLight
     
-    static let tradeCellVPadding = CGFloat(10)
-    static let tradeCellHPadding = CGFloat(20)
-    static let tradeCellFont = UIFont.systemFontOfSize(16, weight: UIFontWeightRegular)
-    static let tradeCellSmallFont = UIFont.systemFontOfSize(12, weight: UIFontWeightRegular)
-    static let tradeCellColor = Color.primaryColorLight
-    static let tradeCellSubtitleColor = Color.primaryColorMediumLight
-    static let tradeCellDeleteColor = Color.redColor
-    static let tradeCellEditColor = Color.primaryColorLight
+    var tradeCellVPadding = CGFloat(10)
+    var tradeCellHPadding = CGFloat(20)
+    var tradeCellFont = UIFont.systemFontOfSize(16, weight: UIFontWeightRegular)
+    var tradeCellSmallFont = UIFont.systemFontOfSize(12, weight: UIFontWeightRegular)
+    var tradeCellColor = Color.primaryColorLight
+    var tradeCellSubtitleColor = Color.primaryColorMediumLight
+    var tradeCellDeleteColor = Color.redColor
+    var tradeCellEditColor = Color.primaryColorLight
     
-    static let tradeFormHMargin = CGFloat(50)
-    static let tradeFormTitleVMargin = CGFloat(10)
-    static let tradeFormLabelLeftMargin = CGFloat(20)
-    static let tradeFormTextfieldVMargin = CGFloat(20)
-    static let tradeFormTextfieldRightMargin = CGFloat(20)
-    static let tradeFormTextColor = Color.primaryColor
-    static let tradeFormTextFieldBorderColor = Color.primaryColor
-    static let tradeFormButtonTextColor = Color.primaryColor
-    static let tradeFormButtonBorderColor = Color.primaryColor
-    static let tradeFormBackground = Color.primaryColorLight
-    static let tradeFormDatePickerColor = Color.primaryColorLight
-    static let tradeFormCornerRadius = CGFloat(4)
-    static let tradeFormTextFieldCornerRadius = CGFloat(3)
-    static let tradeFormButtonCornerRadius = CGFloat(3)
+    var tradeFormHMargin = CGFloat(50)
+    var tradeFormTitleVMargin = CGFloat(10)
+    var tradeFormLabelLeftMargin = CGFloat(20)
+    var tradeFormTextfieldVMargin = CGFloat(20)
+    var tradeFormTextfieldRightMargin = CGFloat(20)
+    var tradeFormTextColor = Color.primaryColor
+    var tradeFormTextFieldBorderColor = Color.primaryColor
+    var tradeFormButtonTextColor = Color.primaryColor
+    var tradeFormButtonBorderColor = Color.primaryColor
+    var tradeFormBackground = Color.primaryColorLight
+    var tradeFormBorderColor = UIColor.clearColor()
+    var tradeFormDatePickerColor = Color.primaryColorLight
+    var tradeFormCornerRadius = CGFloat(4)
+    var tradeFormTextFieldCornerRadius = CGFloat(3)
+    var tradeFormButtonCornerRadius = CGFloat(3)
+
+}
+
+class DarkUI: UIConfig {
+}
+
+class LightUI: UIConfig {
+    
+    override init() {
+        super.init()
+
+        // Global
+        // ------
+        self.statusBarStyle = UIStatusBarStyle.Default
+        self.appBackgroundColor = Color.lightGray
+        self.appTextColor = Color.primaryColor
+        self.pageControlColor = Color.primaryColor
+        
+        
+        // Settings Page
+        // -------------
+        self.switchColor = Color.mediumGray
+        
+        
+        // Main Page
+        // ---------
+        self.currentPriceColor = Color.primaryColor
+        self.lastUpdateColor = Color.primaryColorMediumLight
+        
+        
+        // Trade Page
+        // ----------
+        self.tradeAddButtonColor = Color.primaryColor
+        self.tradePlaceholderColor = Color.primaryColor
+        
+        self.tradeCellColor = Color.primaryColor
+        self.tradeCellSubtitleColor = Color.primaryColorMediumLight
+        self.tradeCellDeleteColor = Color.redColor
+        self.tradeCellEditColor = Color.mediumGray
+        
+        self.tradeFormBackground = Color.lightGray
+        self.tradeFormBorderColor = Color.primaryColor
+    }
 
 }

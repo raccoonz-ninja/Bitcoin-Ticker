@@ -17,14 +17,10 @@ class MainPageViewController: UIViewController {
         super.viewDidLoad()
         
         self.currentPriceLabel.text = ""
-        self.currentPriceLabel.font = UIConfig.currentPriceFont
-        self.currentPriceLabel.textColor = UIConfig.currentPriceColor
         self.currentPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.currentPriceLabel)
         
         self.lastUpdateLabel.template = ""
-        self.lastUpdateLabel.font = UIConfig.lastUpdateFont
-        self.lastUpdateLabel.textColor = UIConfig.lastUpdateColor
         self.lastUpdateLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.lastUpdateLabel)
         
@@ -34,10 +30,21 @@ class MainPageViewController: UIViewController {
         self.view.addConstraint(NSLayoutConstraint(item: self.lastUpdateLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: self.lastUpdateLabel, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: 0))
 
+        self.updateStyle()
         self.updatePrice()
         Dispatcher.on(Dispatcher.Event.NewPriceFetched) { () -> Void in
             self.updatePrice()
         }
+        Dispatcher.on(Dispatcher.Event.StyleUpdated) {
+            self.updateStyle()
+        }
+    }
+    
+    func updateStyle() {
+        self.currentPriceLabel.font = UI.current.currentPriceFont
+        self.currentPriceLabel.textColor = UI.current.currentPriceColor
+        self.lastUpdateLabel.font = UI.current.lastUpdateFont
+        self.lastUpdateLabel.textColor = UI.current.lastUpdateColor
     }
     
     func updatePrice() {

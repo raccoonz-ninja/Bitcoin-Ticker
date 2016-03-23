@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum UIConfigType: String {
+    case Dark = "dark"
+    case Light = "light"
+}
+
 class Config: NSObject {
 
     // Internal data structure used to persist the config
@@ -15,20 +20,24 @@ class Config: NSObject {
         var deviceToken: String?
         var priceOnAppIcon: Bool
         var touchIdProtection: Bool
+        var uiConfig: UIConfigType
         override init() {
             self.deviceToken = nil
             self.priceOnAppIcon = false
             self.touchIdProtection = false
+            self.uiConfig = UIConfigType.Dark
         }
         @objc required init?(coder aDecoder: NSCoder) {
             self.deviceToken = aDecoder.decodeObjectForKey("deviceToken") as? String
             self.priceOnAppIcon = aDecoder.decodeBoolForKey("priceOnAppIcon")
             self.touchIdProtection = aDecoder.decodeBoolForKey("touchIdProtection")
+            self.uiConfig = UIConfigType.init(rawValue: aDecoder.decodeObjectForKey("uiConfig") as? String ?? "") ?? UIConfigType.Dark
         }
         @objc func encodeWithCoder(aCoder: NSCoder) {
             aCoder.encodeObject(self.deviceToken, forKey: "deviceToken")
             aCoder.encodeBool(self.priceOnAppIcon, forKey: "priceOnAppIcon")
             aCoder.encodeBool(self.touchIdProtection, forKey: "touchIdProtection")
+            aCoder.encodeObject(self.uiConfig.rawValue, forKey: "uiConfig")
         }
     }
 
@@ -63,12 +72,23 @@ class Config: NSObject {
     }
     static var touchIdProtection: Bool {
         get {
-        loadIfNeeded()
-        return _configData.touchIdProtection
+            loadIfNeeded()
+            return _configData.touchIdProtection
         }
         set(touchIdProtection) {
             loadIfNeeded()
             _configData.touchIdProtection = touchIdProtection
+            syncToDisk()
+        }
+    }
+    static var uiType: UIConfigType {
+        get {
+            loadIfNeeded()
+            return _configData.uiConfig
+        }
+        set(uiType) {
+            loadIfNeeded()
+            _configData.uiConfig = uiType
             syncToDisk()
         }
     }
