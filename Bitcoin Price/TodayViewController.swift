@@ -26,7 +26,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.lastUpdateLabel.font = UIFont.systemFontOfSize(14.0)
         self.lastUpdateLabel.template = ""
         BitcoinPriceService.start()
-        TodayViewController.notificationCenter.addObserver(self, selector: "updatePrice:", name: "price_update", object: nil)
+        TodayViewController.notificationCenter.addObserver(self, selector: #selector(TodayViewController.updatePrice(_:)), name: "price_update", object: nil)
     }
     
     func updatePrice(notification: NSNotification) {

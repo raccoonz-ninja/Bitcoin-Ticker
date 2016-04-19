@@ -25,7 +25,7 @@ class PriceOnAppIconCell: UITableViewCell {
         self.textLabel?.text = "Price on app icon"
         
         self.switchView.on = Config.priceOnAppIcon
-        self.switchView.addTarget(self, action: "onSwitchChange:", forControlEvents: .ValueChanged)
+        self.switchView.addTarget(self, action: #selector(PriceOnAppIconCell.onSwitchChange(_:)), forControlEvents: .ValueChanged)
         self.accessoryView = switchView
         
         self.updateStyle()

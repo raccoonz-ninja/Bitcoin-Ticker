@@ -26,7 +26,7 @@ class TradePageViewController: UIViewController {
         
         self.addButton.text = "  +  "
         self.addButton.userInteractionEnabled = true
-        self.addButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onAddButtonTap"))
+        self.addButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TradePageViewController.onAddButtonTap)))
         self.addButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.addButton)
         

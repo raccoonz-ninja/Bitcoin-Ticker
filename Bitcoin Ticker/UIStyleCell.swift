@@ -23,7 +23,7 @@ class UIStyleCell: UITableViewCell {
         self.textLabel?.text = "Light style"
         
         self.switchView.on = Config.uiType == UIConfigType.Light
-        self.switchView.addTarget(self, action: "onSwitchChange:", forControlEvents: .ValueChanged)
+        self.switchView.addTarget(self, action: #selector(UIStyleCell.onSwitchChange(_:)), forControlEvents: .ValueChanged)
         self.accessoryView = switchView
         
         self.updateStyle()

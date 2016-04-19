@@ -23,7 +23,7 @@ class TradeTouchIdCell: UITableViewCell {
         self.textLabel?.text = "Touch ID protection"
         
         self.switchView.on = Config.touchIdProtection
-        self.switchView.addTarget(self, action: "onSwitchChange:", forControlEvents: .ValueChanged)
+        self.switchView.addTarget(self, action: #selector(TradeTouchIdCell.onSwitchChange(_:)), forControlEvents: .ValueChanged)
         self.accessoryView = switchView
         
         self.updateStyle()

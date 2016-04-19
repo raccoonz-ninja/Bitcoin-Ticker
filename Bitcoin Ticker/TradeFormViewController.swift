@@ -64,12 +64,12 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = UIColor.clearColor()
         self.view.userInteractionEnabled = true
         self.view.tag = backgroundViewTag
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onBackgroundTap:"))
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TradeFormViewController.onBackgroundTap(_:))))
         
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.userInteractionEnabled = true
         self.contentView.tag = contentViewTag
-        self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onBackgroundTap:"))
+        self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TradeFormViewController.onBackgroundTap(_:))))
         self.view.addSubview(self.contentView)
         
         self.titleLabel.text = self.tradeToEdit != nil ? "Update trade" : "Add a trade"
@@ -112,24 +112,24 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.dateTextfield.textAlignment = .Right
         self.dateTextfield.tag = self.dateTextfieldTag
         self.dateTextfield.delegate = self
-        self.dateTextfield.addTarget(self, action: "onDateTextfieldTap", forControlEvents: .TouchUpInside)
+        self.dateTextfield.addTarget(self, action: Selector("onDateTextfieldTap"), forControlEvents: .TouchUpInside)
         self.contentView.addSubview(self.dateTextfield)
         
         self.dateDatePicker.translatesAutoresizingMaskIntoConstraints = false
-        self.dateDatePicker.addTarget(self, action: "onDatePickerChange", forControlEvents: .ValueChanged)
+        self.dateDatePicker.addTarget(self, action: #selector(TradeFormViewController.onDatePickerChange), forControlEvents: .ValueChanged)
         self.view.addSubview(self.dateDatePicker)
         
         self.buyButton.setTitle("Buy", forState: .Normal)
         self.buyButton.translatesAutoresizingMaskIntoConstraints = false
         self.buyButton.layer.borderWidth = 1
-        self.buyButton.addTarget(self, action: "onBuyTap", forControlEvents: .TouchUpInside)
+        self.buyButton.addTarget(self, action: #selector(TradeFormViewController.onBuyTap), forControlEvents: .TouchUpInside)
         self.buyButton.enabled = true
         self.contentView.addSubview(self.buyButton)
         
         self.sellButton.setTitle("Sell", forState: .Normal)
         self.sellButton.translatesAutoresizingMaskIntoConstraints = false
         self.sellButton.layer.borderWidth = 1
-        self.sellButton.addTarget(self, action: "onSellTap", forControlEvents: .TouchUpInside)
+        self.sellButton.addTarget(self, action: #selector(TradeFormViewController.onSellTap), forControlEvents: .TouchUpInside)
         self.sellButton.enabled = true
         self.contentView.addSubview(self.sellButton)
         
@@ -175,15 +175,15 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         
         self.view.addConstraint(NSLayoutConstraint(item: self.dateDatePicker, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: self.dateDatePicker, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: 0))
-        self.datePickerBottomConstraint_shown = NSLayoutConstraint(item: self.dateDatePicker, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: -20)
-        self.datePickerBottomConstraint_hidden = NSLayoutConstraint(item: self.dateDatePicker, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 200)
+        self.datePickerBottomConstraint_shown = NSLayoutConstraint(item: self.dateDatePicker, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: -0)
+        self.datePickerBottomConstraint_hidden = NSLayoutConstraint(item: self.dateDatePicker, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 220)
         
         self.updateContentViewConstraint(false)
         self.updateDatePickerConstraint(false)
         self.updateDateTextField()
         
         // Refresh date field
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateDateTextField", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(TradeFormViewController.updateDateTextField), userInfo: nil, repeats: true)
         
         // Refresh the price field
         Dispatcher.on(Dispatcher.Event.NewPriceFetched) {
@@ -215,7 +215,8 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.priceTextfield.tintColor = UI.current.tradeFormTextFieldBorderColor
         self.datelabel.textColor = UI.current.tradeFormTextColor
         self.dateTextfield.layer.borderColor = UI.current.tradeFormTextFieldBorderColor.CGColor
-        self.dateDatePicker.setValue(UI.current.tradeFormDatePickerColor, forKey: "textColor") // Not working :(
+//        self.dateDatePicker.setValue(UI.current.tradeFormDatePickerColor, forKey: "textColor") // Not working :(
+        self.dateDatePicker.backgroundColor = UI.current.tradeFormDatePickerColor
         self.buyButton.layer.borderColor = UI.current.tradeFormButtonBorderColor.CGColor
         self.buyButton.layer.cornerRadius = UI.current.tradeFormButtonCornerRadius
         self.buyButton.setTitleColor(UI.current.tradeFormButtonTextColor, forState: .Normal)

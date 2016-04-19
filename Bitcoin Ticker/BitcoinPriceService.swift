@@ -31,7 +31,7 @@ class BitcoinPriceService: NSObject {
     
     static func start() {
         fetchPriceOnce()
-        NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "fetchPriceOnce", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(BitcoinPriceService.fetchPriceOnce), userInfo: nil, repeats: true)
     }
     
     static func fetchPriceOnce() {

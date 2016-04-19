@@ -38,7 +38,7 @@ class LiveLabel: UILabel {
         self._date = date
         super.init(frame: CGRectZero)
         self.updateText()
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateText", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(LiveLabel.updateText), userInfo: nil, repeats: true)
     }
     
     convenience init(template: String) {
