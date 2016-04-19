@@ -112,7 +112,6 @@ class TradeFormViewController: UIViewController, UITextFieldDelegate {
         self.dateTextfield.textAlignment = .Right
         self.dateTextfield.tag = self.dateTextfieldTag
         self.dateTextfield.delegate = self
-        self.dateTextfield.addTarget(self, action: Selector("onDateTextfieldTap"), forControlEvents: .TouchUpInside)
         self.contentView.addSubview(self.dateTextfield)
         
         self.dateDatePicker.translatesAutoresizingMaskIntoConstraints = false
